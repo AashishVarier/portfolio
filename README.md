@@ -1,2 +1,2 @@
 # portfolio-site
-responsive portfolio website using HTML, CSS, JavaScript and Bootstrap version 5
+responsive portfolio website using HTML, CSS, JavaScript and Bootstrap v.5
