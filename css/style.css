@@ -85,6 +85,15 @@
     background-color: #f1f1f1;
     padding: 20px;
   }
+
+  .center {   
+    -ms-flex: 70%; /* IE10 */
+    flex:70%;
+    background-color: #f1f1f1;
+    padding: 100px;
+    vertical-align:middle;
+    border: 3px solid #666;
+  }
   /*Avatar*/
   .avatar {
     width:250px;
