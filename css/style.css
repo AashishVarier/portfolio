@@ -101,6 +101,7 @@
     flex: 20%;
     background-color: #aaa;
     padding: 20px;
+    
   }
 
 
@@ -109,9 +110,14 @@
     -ms-flex: 70%; /* IE10 */
     flex: 70%;
     background-color: #f1f1f1;
-    padding: 20px;
+    padding: 50px;
+    vertical-align:middle;
+    border: 3px solid #666;
   }
-
+  .main:hover {
+    background-color: #ddd;
+    color: black;
+  }
   .center {   
     -ms-flex: 30%; /* IE10 */
     flex:30%;
@@ -125,6 +131,8 @@
     background-color: #ddd;
     color: black;
   }
+
+  
   /*Avatar*/
   .avatar {
     width:250px;
@@ -144,7 +152,7 @@
   .footer {
     padding: 20px;
     text-align: center;
-    background: #ddd;
+    background: #ddd; 
   }
   
   /* Responsive layout - when the screen is less than 700px wide, make the two columns stack on top of each other instead of next to each other */
@@ -169,8 +177,5 @@
   }
 /*remove link underline  */
 a:link {
-    text-decoration: none;
-    
-    
+    text-decoration: none;    
 }
-
