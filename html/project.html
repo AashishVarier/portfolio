@@ -12,40 +12,66 @@
 
 <div class="navbar">
   <a href="../index.html" ><b>Aashish Varier R</b></a>
-  <a  href="javascript: document.body.scrollIntoView(false);"class="right"class="right">Find Me!</a>
+  <a  href="javascript: document.body.scrollIntoView(false);"class="right">Find Me!</a>
   <a href="blog.html" class="right">Blog</a>
   <a href="project.html" class="right active">Project</a>
 </div>
 
-<div class="fliter">
-  <a>Filter by topic</a>
-  <a href="#" >Find Me!</a>
-  <a href="blog.html" >Blog</a>
-  <a href="project.html" >Project</a>
+<div class="fliter" >
+  <a>Filter by topic:</a>
+  <div id="myBtnContainer">
+    <button class="btn active" onclick="filterSelection('all')" >Show all</button>
+    <button class="btn" onclick="filterSelection('java')" >Java</button>
+    <button class="btn" onclick="filterSelection('python')" >Python</button>
+    <button class="btn" onclick="filterSelection('springboot')" >SpringBoot</button>
+    <button class="btn" onclick="filterSelection('js')" >JavaScript</button>
+    <button class="btn" onclick="filterSelection('htmlcss')">HTML/CSS</button>
+  </div>
 </div>
 <!--3 column per class ="row"-->
 <div class="row"> 
-  <div class="center">
+  <div class="center java springboot">
     <h2> Project #1</h2>
-    <h5>Title description, Dec 7, 2017</h5>
+    <h5>Dec 7, 2017</h5>
+    <h6>Tag: java,springboot </h6> 
     <!--<div class="fakeimg" style="height:200px;">Image</div>-->
     <p>Some text..</p>
     <p>Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
     <br>
   </div>
-  <div class="center">
+  <div class="center python">
     <h2>Project #2</h2>
-    <h5>Title description, Sep 2, 2017</h5>
+    <h5>Dec 7, 2017</h5>
+    <h6>Tag: python </h6> 
     <p>Some text..</p>
     <p>Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
   </div>
-  <div class="center">
+  <div class="center java">
     <h2> Project #3</h2>
-    <h5>Title description, Dec 7, 2017</h5>
+    <h5>Dec 7, 2017</h5>
+    <h6>Tag: java </h6> 
     <p>Some text..</p>
     <p>Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
     <br>
     </div>
+</div>
+<div class="row"> 
+  <div class="center htmlcss">
+    <h2> Project #4</h2>
+    <h5>Dec 7, 2017</h5>
+    <h6>Tag: htmlcss </h6> 
+    <!--<div class="fakeimg" style="height:200px;">Image</div>-->
+    <p>Some text..</p>
+    <p>Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
+    <br>
+  </div>
+  <div class="center htmlcss js">
+    <h2>Project #5</h2>
+    <h5>Dec 7, 2017</h5>
+    <h6>Tag: html,css,javascript </h6> 
+    <p>Some text..</p>
+    <p>Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
+  </div>
 </div>
 
 <div class="footer">
@@ -59,6 +85,6 @@
     <i class="fa fa-twitter" style="font-size:36px" ></i>
   </a>
   </div>
-
+  <script type="text/javascript" src="../script/script.js"></script>
 </body>
 </html>
