@@ -23,14 +23,14 @@ function removeClass(element, name) {
   var i, arr1, arr2;
   arr1 = element.className.split(" ");
   arr2 = name.split(" ");
-  console.log("removeClass cls:" + arr1);
+  
   for (i = 0; i < arr2.length; i++) {
     while (arr1.indexOf(arr2[i]) > -1) {
       arr1.splice(arr1.indexOf(arr2[i]), 1);     
     }
   }
   element.className = arr1.join(" ");
-  console.log("removeClass clsfin:" + element.className);
+  
 }
 
 // Add active class to the current button (highlight it)
@@ -41,6 +41,7 @@ for (var i = 0; i < btns.length; i++) {
     var current = document.getElementsByClassName("active");
     current[0].className = current[0].className.replace(" active", "");
     this.className += " active";
-    console.log("btns" + current );
+    
   });
 }
+//filterend
