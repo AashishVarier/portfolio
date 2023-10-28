@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="Expires" content="0" />
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Learn how to create Chrome Extension. Follow this quick reference guide to understand Chrome Extension.">
+<meta name="keywords" content="Chrome Extension, web development, HTML, CSS, JavaScript, Web platform APIs, guide, SEO">
+<title>AashishVarierR : Extension 101</title>
+
+<!-- Add Open Graph and Twitter Card meta tags for better social sharing -->
+<meta property="og:title" content="Extension 101">
+<meta property="og:description" content="Learn how to create Chrome Extension. Follow this quick reference guide to understand Chrome Extension.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://aashishvarier.github.io/portfolio/blog/blog1.html">
+<meta property="og:image" content="https://aashishvarier.github.ioportfolio/blog/blog1.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Extension 101">
+<meta name="twitter:description" content="Learn how to create Chrome Extension. Follow this quick reference guide to understand Chrome Extension.">
+<meta name="twitter:image" content="https://aashishvarier.github.io/portfolio/blog/blog1.html">
+
+<!-- Add canonical URL to prevent duplicate content issues -->
+<link rel="canonical" href="https://aashishvarier.github.io/portfolio/blog/blog1.html">
+
+<!-- Include a robots meta tag to allow indexing -->
+<meta name="robots" content="index, follow">
+</head>
+<body>
+
+
+<div class="navbar">
+  <a href="../index.html" ><b>Aashish Varier R</b></a>
+  <a href="../html/blog.html" class="right active">Blog</a>
+  <a href="../html/project.html" class="right">Project</a>
+</div>
+<div class ="center">
+  <h1>Blog #1: Extension 101</h1>
+  <h5>Date: Oct 29, 2023</h5>
+  <h6>Tag: Chrome Extention</h6>
+<h2>Chrome Extension:</h2>
+
+<p>If you're looking for a comprehensive introduction to the topic, Google has provided a detailed guide that you can find <a href="https://developer.chrome.com/docs/extensions/mv3/getstarted/extensions-101/" target="_blank">here</a>. However, for quick reference, here's a concise overview:</p>
+
+
+<p><b>What are extensions?</b> -  Chrome extensions enhance the browsing experience by adding features and functionality to the Chrome browser. </p>
+
+<p><b>What should I keep in mind when desinging one?</b> - When you start designing your extension and choosing which features to support, make sure it fulfills a single purpose that is narrowly defined and easy to understand.</p>
+
+<p><b>How to publish it ?</b> - You can set up a developer account with the <a href="https://chrome.google.com/webstore/category/extensions">Chrome Web Store</a> to host and distribute your extension. Bear in mind that extensions must adhere to the <a href="https://developer.chrome.com/docs/webstore/program-policies/">developer program policies</a>.</p>
+
+  <h2>Web technologies used</h2>
+  <ul>
+    <li>HTML is used as a content markup language.</li>
+    <li>CSS is used for styling.</li>
+    <li>JavaScript is used for scripting and logic.</li>
+    <li><a href="https://developer.mozilla.org/en-US/docs/Web/API">Web platform APIs </a> that let you use virtually any feature available to a standard web page and <a href="https://developer.chrome.com/docs/extensions/reference/">Chrome extension APIs</a> which is chrome provided extension, with many special-purpose APIs </li>
+  </ul>
+
+
+  <h2>Extension files to keep in mind</h2>
+  <p>Architecture overview for the same can be found <a href="https://developer.chrome.com/docs/extensions/mv3/architecture-overview/">here</a>. </p>
+  <p>But the following are some of the most frequently used files:</p>
+  <ul>
+      <li><b>manifest</b>: The extension's manifest is the only required file that must have a specific file name: <code>manifest.json</code>. It also has to be <b>located in the extension's root directory</b>. The manifest records important metadata, defines resources, declares permissions, and identifies which files to run in the background and on the page. </li>
+      <li><b> service worker</b>:The extension service worker handles and listens for browser events. There are many types of events, such as navigating to a new page, removing a bookmark, or closing a tab. It can use all the Chrome APIs, but it cannot interact directly with the content of web pages. </li>
+      <li><b>content scripts</b>:Content scripts execute Javascript in the context of a web page. They can also read and modify the DOM of the pages they're injected into. Content Scripts can only use a subset of the Chrome APIs but can indirectly access the rest by exchanging messages with the extension service worker. </li>
+      <li><b> popup and other pages</b>:An extension can include various HTML files, such as a popup, an options page, and other HTML pages. All these pages have access to Chrome APIs. </li>
+  </ul>
+  <h2>Developing your extension </h2>
+<p>helpful tutorial to get your hands dirty :</p>
+  <ul>
+    <li><a href="https://developer.chrome.com/docs/extensions/mv3/getstarted/development-basics/"> hello world</a> in the world of extension. </li>
+    <li><a href="https://developer.chrome.com/docs/extensions/mv3/getstarted/tut-reading-time/">Reading time</a>: To insert an element on every page automatically.</li>
+    <li><a href="https://developer.chrome.com/docs/extensions/mv3/getstarted/tut-focus-mode/">Focus Mode</a>:To run code on the current page after clicking on the extension action.</li>
+    <li><a href="https://developer.chrome.com/docs/extensions/mv3/getstarted/tut-tabs-manager/">Tabs Manager</a>: To create a popup that manages browser tabs.</li>
+  </ul>
+  
+
+  <h2>Debugging your extension</h2>
+  <p> Extensions can access the same Chrome DevTools as web pages. To become an expert in debugging extensions, you will need to know how to locate logs and errors of the different extension components. This <a href="https://developer.chrome.com/docs/extensions/mv3/tut_debugging/"> tutorial </a>provides fundamental techniques for debugging your extension.</p>
+
+  <h4 align="right">Next Blog #2 :<a href=""> YT comment translator</a> </h4>
+
+</div>
+
+<div class="footer">
+ 
+  <a href="https://github.com/AashishVarier" >
+    <i class="fa fa-github animate" style="font-size:36px" >&nbsp</i>
+    </a>
+  <a href="https://www.linkedin.com/in/aashish-varier-2b232489/" >
+    <i class="fa fa-linkedin-square animate" style="font-size:36px" >&nbsp</i>
+  </a>
+  <a href="https://twitter.com/arvariable" >
+    <i class="fa fa-twitter animate" style="font-size:36px" ></i>
+  </a>
+</div>
+<script type="text/javascript" src="../script/script.js"></script>
+</body>
+</html>
