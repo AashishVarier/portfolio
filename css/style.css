@@ -99,10 +99,13 @@
   /* Create two unequal columns that sits next to each other */
   /* Sidebar/left column */
   .side {
-    -ms-flex: 20%; /* IE10 */
-    flex: 20%;
+    -ms-flex: 30%; /* IE10 */
+    flex: 30%;
     background-color: #aaa;
-    padding: 20px;
+    padding: 30px;
+    vertical-align:middle;
+    
+    
     
   }
 
@@ -157,7 +160,7 @@
   .footer {
     padding: 20px;
     text-align: center;
-    background: #ddd; 
+    background: #333; /* #ddd; */
     position: fixed;
     left: 0;
     bottom: 0;
