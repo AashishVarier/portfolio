@@ -47,7 +47,7 @@
     
     <p>HuggingFace is currently the best place to find open-source pre-trained machine learning models. It's sort of like a popular code repository for machine learning models.</p>
 
-    <p>We can use HuggingFace to tune the pre-trained model and deploy it on serverless services or use their inference API for prototyping. However, our goal is to run it locally and create a wrapper API endpoint.</p>
+    <p>We can use HuggingFace to tune the pre-trained model and deploy it on serverless services or use their inference API for prototyping. However, our goal is to run it locally.</p>
 
     <h2>My Requirements</h2>
     <ul>
@@ -59,17 +59,17 @@
 
     <p>After going through the models' documentation, I chose: <strong>Helsinki-NLP/opus-mt-mul-en</strong>.</p>
 
-    <p>There are filters on the model pages. Make sure to filter based on your requirement and remember to check the option for the correct license for you.</p>
+    <p>There are filters on the model pages. Make sure to filter based on your requirement and remember to check the option for the correct license suitable for you.</p>
 
     <h1>Running a Machine Learning Model Locally</h1>
     <p>We will use Python to run the model. Keep in mind that I am using WSL2 with Ubuntu 22 LTS and Python 3.10</p>
 
     <h2>Local Python Environment</h2>
-    <p>Before we start, it is recommended to create a virtual env for our project. Why ? Because , the more Python projects we have, the more likely it is that we need to work with different versions of Python libraries, or even Python itself. Different versions of libraries for one project can break compatibility in another project. I tend to use <strong>venv</strong> within the project folder for web applications and use <code>pip freeze</code> to check the project's packages. Alternatively, <strong>Conda</strong> is another option.</p>
-    <p>Find out how to create, activate, and deactivate a virtual environment<a href="https://packaging.python.org/en/latest/guides/installing-using-pip-and-virtual-environments/" target="_blank" rel="nofollow">here</a>.</p>
+    <p>Before we start, it is recommended to create a virtual env for our project. Why ? Because , the more Python projects we have, the more likely it is that we need to work with different versions of Python libraries, or even Python itself. Different versions of libraries for one project can break compatibility in another project. I tend to use <strong>venv</strong> within the project folder and use <code>pip freeze</code> to check the project's packages. Alternatively, <strong>Conda</strong> is another option.</p>
+    <p>Find out how to create, activate, and deactivate a virtual environment <a href="https://packaging.python.org/en/latest/guides/installing-using-pip-and-virtual-environments/" target="_blank" rel="nofollow">here</a>.</p>
 
     <h2>Deep Learning Library</h2>
-    <p>We have many DLL today.Popular ones include <strong>PyTorch</strong> and <strong>TensorFlow</strong>. HuggingFace initially supported PyTorch but at present supports TensorFlow (we will use TensorFlow, as I want to explore <strong>TensorFlow Lite</strong> later for its better Android support).</p>
+    <p>We have many DLL today.Popular ones include <strong>PyTorch</strong> and <strong>TensorFlow</strong>. HuggingFace initially supported PyTorch but at present supports TensorFlow as well. (We will use TensorFlow, as I want to explore <strong>TensorFlow Lite</strong> later for its better Android support)</p>
     <p>We will be using a CPU only version of TensorFlow (I have an older  NVIDIA GTX card which is not officially supported).</p>
 
     <h3>Installing TensorFlow</h3>
@@ -95,7 +95,7 @@ pip install tensorflow</code></pre>
       <li>You can find the official installation guide<a href="https://huggingface.co/docs/transformers/installation" target="_blank" rel="nofollow"> here</a>. </li>
     </ul>
     
-    <p>For CPU-support only, we can conveniently install HugginFace Transformers and TensorFlow 2.0. (This is my recommendation to install TensorFlow and HuggingFace Transformer on local which require CPU only support of TensorFlow):</p>
+    <p>For CPU-support only, we can conveniently install HugginFace Transformers and TensorFlow 2.0 using the below command (This is my recommendation to install TensorFlow and HuggingFace Transformer on local which require CPU only support of TensorFlow):</p>
     
     <pre><code>pip install 'transformers[tf-cpu]'</code></pre>
 
@@ -104,7 +104,7 @@ pip install tensorflow</code></pre>
     <img src="../image/blog2_3.JPG" alt="tf tensor" >
 
     <h1>Running the Helsinki-NLP/Opus-mt-mul-en Model Locally</h1>
-    <p><strong>Note:</strong> You can find the code<a href="https://github.com/AashishVarier/langTrans_py/" target="_blank" rel="nofollow"> here</a>.</p>
+    <p><strong>Note:</strong> You can find the code used in this blog<a href="https://github.com/AashishVarier/langTrans_py/" target="_blank" rel="nofollow"> here</a>.</p>
 
     <p>We can copy the template for the HuggingFace <strong>Pipeline</strong> which simplifies using models for inference. According to HuggingFace documentation, pipelines abstract complex code, providing a simple API for several tasks. Even if we don't have experience with a specific modality or aren't familiar with the underlying code behind the models, you can still use them for inference with the pipeline().</p>
     <p><strong>Note:</strong>  Remember that the code provided will most likely be set to use PyTorch.</p>
@@ -126,12 +126,12 @@ pip install tensorflow</code></pre>
     <h3>Improving Translation Accuracy ?</h3>
     <p>Finetuning the model is beyond the scope of this blog. But if we prepend the language to the input text as below  we will get a more accurate result.</p>
     <img src="../image/blog2_6.JPG" alt="prepend the language to the input text" >
-    <p>However, based on the <a href="https://huggingface.co/docs/transformers/model_doc/marian#multilingual-models" target="_blank" rel="nofollow">MarianMT Model documentation</a>, we don’t need to prepend the source language in multilingual mode, leading to possible confusion or a bug. Unfortunately I was not able to find an answer for this.</p>
+    <p>However, based on the <a href="https://huggingface.co/docs/transformers/model_doc/marian#multilingual-models" target="_blank" rel="nofollow">MarianMT Model documentation</a>, we don’t need to prepend the source language in multilingual mode, leading to possible confusion or a bug ? Unfortunately I was not able to find an answer for this.</p>
 
     <h2>Coding it up using HuggingFace Pipeline</h2>
     <p> Code :</p>
     <img src="../image/blog2_7.JPG" alt="trasformer code" >
-    <p> (I have prepend the language to the input text.)</p>
+    <p> (I have prepend the language to the input text to improve the translation.)</p>
     <p>Output :</p>
     <img src="../image/blog2_8.JPG" alt="trasformer code" >
     
