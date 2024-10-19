@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="Expires" content="0" />
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Learn how to find and deploy a pre-trained machine learning model from HuggingFace, including translation tasks using Helsinki-NLP/opus-mt-mul-en. Also covers Python and TensorFlow setup.">
+<meta name="keywords" content="HuggingFace, pretrained models, machine learning, translation models, Helsinki-NLP, opus-mt-mul-en, Python, TensorFlow, API, Flask, WSL2, virtual environment, transformers, TensorFlow Lite, installation, inference, pipeline">
+<title>AashishVarierR : Finding and Using Pretrained Models from HuggingFace</title>
+
+<!-- Add Open Graph and Twitter Card meta tags for better social sharing -->
+<meta property="og:title" content="Finding and Using Pretrained Models from HuggingFace">
+<meta property="og:description" content="Learn how to find and deploy a pre-trained machine learning model from HuggingFace, including translation tasks using Helsinki-NLP/opus-mt-mul-en. Also covers Python and TensorFlow setup.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://aashishvarier.github.io/portfolio/blog/blog2.html">
+<meta property="og:image" content="https://aashishvarier.github.ioportfolio/blog/blog2.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Finding and Using Pretrained Models from HuggingFace">
+<meta name="twitter:description" content="Learn how to find  and deploy a pre-trained machine learning model from HuggingFace, including translation tasks using Helsinki-NLP/opus-mt-mul-en. Also covers Python and TensorFlow setup.">
+<meta name="twitter:image" content="https://aashishvarier.github.io/portfolio/blog/blog2.html">
+
+<!-- Add canonical URL to prevent duplicate content issues -->
+<link rel="canonical" href="https://aashishvarier.github.io/portfolio/blog/blog2.html">
+
+<!-- Include a robots meta tag to allow indexing -->
+<meta name="robots" content="index, follow">
+</head>
+<body>
+
+
+<div class="navbar">
+  <a href="../index.html" ><b>Aashish Varier R</b></a>
+  <a href="../html/blog.html" class="right active">Blog</a>
+  <a href="../html/project.html" class="right">Project</a>
+</div>
+<div class ="center">
+  <h1>Blog #2: Finding and Using Pretrained Models from HuggingFace</h1>
+  <h5>Date: Oct 19, 2024</h5>
+  <h6>Tag: Python, Machine Learning</h6>
+
+  <h1>Finding a Decent Pre-trained Model from HuggingFace</h1>
+    
+    <p>HuggingFace is currently the best place to find open-source pre-trained machine learning models. It's sort of like a popular code repository for machine learning models.</p>
+
+    <p>We can use HuggingFace to tune the pre-trained model and deploy it on serverless services or use their inference API for prototyping. However, our goal is to run it locally and create a wrapper API endpoint.</p>
+
+    <h2>My Requirements</h2>
+    <ul>
+        <li><strong>Task:</strong> Translation</li>
+        <li><strong>Languages:</strong> Multiple languages</li>
+        <li><strong>License:</strong> Apache 2.0, MIT</li>
+        <li><strong>Decent Average Score:</strong> BLEU (Bilingual Evaluation Understudy) - the higher, the better.</li>
+    </ul>
+
+    <p>After going through the models' documentation, I chose: <strong>Helsinki-NLP/opus-mt-mul-en</strong>.</p>
+
+    <p>There are filters on the model pages. Make sure to filter based on your requirement and remember to check the option for the correct license for you.</p>
+
+    <h1>Running a Machine Learning Model Locally</h1>
+    <p>We will use Python with Flask to create an API and pass parameters to our running model. Keep in mind that I am using WSL2 with Ubuntu 22 LTS and Python 3.10</p>
+
+    <h2>Local Python Environment</h2>
+    <p>Before we start, it is recommended to create a virtual env for our project. Why ? Because , the more Python projects we have, the more likely it is that we need to work with different versions of Python libraries, or even Python itself. Different versions of libraries for one project can break compatibility in another project. I tend to use <strong>venv</strong> within the project folder for web applications and use <code>pip freeze</code> to check the project's packages. Alternatively, <strong>Conda</strong> is another option.</p>
+    <p>Find out how to create, activate, and deactivate a virtual environment<a href="https://packaging.python.org/en/latest/guides/installing-using-pip-and-virtual-environments/" target="_blank" rel="nofollow">here</a>.</p>
+
+    <h2>Deep Learning Library</h2>
+    <p>We have many DLL today.Popular ones include <strong>PyTorch</strong> and <strong>TensorFlow</strong>. HuggingFace initially supported PyTorch but at present supports TensorFlow (we will use TensorFlow, as I want to explore <strong>TensorFlow Lite</strong> later for its better Android support).</p>
+    <p>We will be using a CPU only version of TensorFlow (I have an older  NVIDIA GTX card which is not officially supported).</p>
+
+    <h3>Installing TensorFlow</h3>
+    <p>Installation details for TensorFlow can be found <a href="https://www.tensorflow.org/install/pip" target="_blank" rel="nofollow">here</a>.</p>
+    <p> <strong>Note:</strong> This will install the latest TensorFlow onto the system and this will cause some or the other backward compatibility issue with HuggingFace Transformer. Check out the <i>‘Installing HugginFace Transformers’</i>  section to install a Transformer with compactable TensorFlow.</p>
+    <p><strong>Note:</strong> Avoid using <strong>Conda</strong> for TensorFlow as it may not have the latest stable version.</p>
+    <p>For CPU users:</p>
+    <pre><code>pip install --upgrade pip
+pip install tensorflow</code></pre>
+<img src="../image/blog2_1.JPG" alt="successful install" >
+
+    <h4>Verifying CPU-only Installation of TensorFlow</h4>
+    <pre><code>python3 -c "import tensorflow as tf; print(tf.reduce_sum(tf.random.normal([1000, 1000])))"</code></pre>
+    
+    <p>If a tensor is returned, the installation is successful.</p>
+
+    <img src="../image/blog2_2.JPG" alt="tf tensor" >
+
+    <h3>Installing HuggingFace Transformers</h3>
+    <ul>
+      <li><strong>HuggingFace Transformers</strong> is a library that simplifies the process of building and training language models  or including them into custom applications.</li>
+      <li><strong>Note:</strong> If you install and validate HuggingFace transformer,  you will find that it is built upon pytorch as the underlying Machine Learning framework.</li>
+      <li>You can find the official installation guide<a href="https://huggingface.co/docs/transformers/installation" target="_blank" rel="nofollow"> here</a>. </li>
+    </ul>
+    
+    <p>For CPU-support only, we can conveniently install HugginFace Transformers and TensorFlow 2.0. (This is my recommendation to install TensorFlow and HuggingFace Transformer on local which require CPU only support of TensorFlow):</p>
+    
+    <pre><code>pip install 'transformers[tf-cpu]'</code></pre>
+
+    <p>Finally, check if HuggingFace Transformers has been properly installed by running the following command. (It will download a pretrained model and run it)</p>
+    <pre><code>python -c "from transformers import pipeline; print(pipeline('sentiment-analysis')('we love you'))"</code></pre>
+    <img src="../image/blog2_3.JPG" alt="tf tensor" >
+
+    <h1>Running the Helsinki-NLP/Opus-mt-mul-en Model Locally</h1>
+    <p><strong>Note:</strong> You can find the code<a href="https://github.com/AashishVarier/langTrans_py/" target="_blank" rel="nofollow"> here</a>.</p>
+
+    <p>We can copy the template for the HuggingFace <strong>Pipeline</strong> which simplifies using models for inference. According to HuggingFace documentation, pipelines abstract complex code, providing a simple API for several tasks. Even if we don't have experience with a specific modality or aren't familiar with the underlying code behind the models, you can still use them for inference with the pipeline().</p>
+    <p><strong>Note:</strong>  Remember that the code provided will most likely be set to use PyTorch.</p>
+    <h2>Coding it up as a transformer</h2>
+    <p> Code :</p>
+    <img src="../image/blog2_4.JPG" alt="trasformer code" >
+
+    <p>Output :</p>
+    <img src="../image/blog2_5.JPG" alt="trasformer code" >
+
+    <p><strong>Note:</strong> Details on TFAutoModel can be followed up <a href="https://huggingface.co/docs/transformers/en/model_doc/auto#transformers.TFAutoModel" target="_blank" rel="nofollow">here</a>.</p>
+    <p><strong>Note:</strong> Details on AutoTokenizer can be followed up <a href="https://huggingface.co/docs/transformers/en/model_doc/auto#transformers.AutoTokenizer" target="_blank" rel="nofollow">here</a>. The tokenizer returns a dictionary with three important items:</p>
+    <ul>
+      <li>input_ids are the indices corresponding to each token in the sentence.</li>
+      <li>attention_mask indicates whether a token should be attended to or not.</li>
+      <li>token_type_ids identifies which sequence a token belongs to when there is more than one sequence. </li>
+    </ul>
+
+    <h3>Improving Translation Accuracy ?</h3>
+    <p>Finetuning the model is beyond the scope of this blog. But if we prepend the language to the input text as below  we will get a more accurate result.</p>
+    <img src="../image/blog2_6.JPG" alt="prepend the language to the input text" >
+    <p>However, based on the <a href="https://huggingface.co/docs/transformers/model_doc/marian#multilingual-models" target="_blank" rel="nofollow">MarianMT Model documentation</a>, we don’t need to prepend the source language in multilingual mode, leading to possible confusion or a bug. Unfortunately I was not able to find an answer for this.</p>
+
+    <h2>Coding it up using HuggingFace Pipeline</h2>
+    <p> Code :</p>
+    <img src="../image/blog2_7.JPG" alt="trasformer code" >
+    <p> (I have prepend the language to the input text.)</p>
+    <p>Output :</p>
+    <img src="../image/blog2_8.JPG" alt="trasformer code" >
+    
+    <p><strong>In conclusion</strong> , using the pipeline is easier for inference than the traditional method, although the latter offers more tweaking flexibility.</p>
+
+  
+
+  <h4 align="right">Next Blog #3 :<a href=""> YT comment translator</a> </h4>
+
+
+</div>
+
+<div class="footer">
+ 
+  <a href="https://github.com/AashishVarier" >
+    <i class="fa fa-github animate" style="font-size:36px" >&nbsp</i>
+    </a>
+  <a href="https://www.linkedin.com/in/aashish-varier-2b232489/" >
+    <i class="fa fa-linkedin-square animate" style="font-size:36px" >&nbsp</i>
+  </a>
+  <a href="https://twitter.com/arvariable" >
+    <i class="fa fa-twitter animate" style="font-size:36px" ></i>
+  </a>
+</div>
+<script type="text/javascript" src="../script/script.js"></script>
+</body>
+</html>
