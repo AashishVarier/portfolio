@@ -10,7 +10,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="Learn how to find and deploy a pre-trained machine learning model from HuggingFace, including translation tasks using Helsinki-NLP/opus-mt-mul-en. Also covers Python and TensorFlow setup.">
-<meta name="keywords" content="HuggingFace, pretrained models, machine learning, translation models, Helsinki-NLP, opus-mt-mul-en, Python, TensorFlow, API, Flask, WSL2, virtual environment, transformers, TensorFlow Lite, installation, inference, pipeline">
+<meta name="keywords" content="HuggingFace, pretrained models, machine learning, translation models, Helsinki-NLP, opus-mt-mul-en, Python, TensorFlow,  WSL2, virtual environment, transformers, TensorFlow Lite, installation, inference, pipeline">
 <title>AashishVarierR : Finding and Using Pretrained Models from HuggingFace</title>
 
 <!-- Add Open Graph and Twitter Card meta tags for better social sharing -->
@@ -62,7 +62,7 @@
     <p>There are filters on the model pages. Make sure to filter based on your requirement and remember to check the option for the correct license for you.</p>
 
     <h1>Running a Machine Learning Model Locally</h1>
-    <p>We will use Python with Flask to create an API and pass parameters to our running model. Keep in mind that I am using WSL2 with Ubuntu 22 LTS and Python 3.10</p>
+    <p>We will use Python to run the model. Keep in mind that I am using WSL2 with Ubuntu 22 LTS and Python 3.10</p>
 
     <h2>Local Python Environment</h2>
     <p>Before we start, it is recommended to create a virtual env for our project. Why ? Because , the more Python projects we have, the more likely it is that we need to work with different versions of Python libraries, or even Python itself. Different versions of libraries for one project can break compatibility in another project. I tend to use <strong>venv</strong> within the project folder for web applications and use <code>pip freeze</code> to check the project's packages. Alternatively, <strong>Conda</strong> is another option.</p>
