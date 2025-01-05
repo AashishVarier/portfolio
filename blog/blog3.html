@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="Expires" content="0" />
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Docker cheat sheet">
+<meta name="keywords" content="Docker , cheat sheet">
+<title>AashishVarierR : Docker cheat sheet</title>
+
+<!-- Add Open Graph and Twitter Card meta tags for better social sharing -->
+<meta property="og:title" content="Docker cheat sheet">
+<meta property="og:description" content="Docker cheat sheet">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://aashishvarier.github.io/portfolio/blog/blog3.html">
+<meta property="og:image" content="https://aashishvarier.github.ioportfolio/blog/blog3.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Docker cheat sheet">
+<meta name="twitter:description" content="Docker cheat sheet">
+<meta name="twitter:image" content="https://aashishvarier.github.io/portfolio/blog/blog3.html">
+
+<!-- Add canonical URL to prevent duplicate content issues -->
+<link rel="canonical" href="https://aashishvarier.github.io/portfolio/blog/blog3.html">
+
+<!-- Include a robots meta tag to allow indexing -->
+<meta name="robots" content="index, follow">
+</head>
+<body>
+
+
+<div class="navbar">
+  <a href="../index.html" ><b>Aashish Varier R</b></a>
+  <a href="../html/blog.html" class="right active">Blog</a>
+  <a href="../html/project.html" class="right">Project</a>
+</div>
+<div class ="center">
+  <h1>Blog #3: Docker cheat sheet</h1>
+  <h5>Date: Jan 05, 2025</h5>
+  <h6>Tag: Docker</h6>
+
+  <h2>Basic Commands</h2>
+    <pre>
+Check Docker version: docker --version
+List running containers: docker ps
+List all containers (including stopped): docker ps -a
+Start a container: docker start &lt;container_id&gt;
+Stop a container: docker stop &lt;container_id&gt;
+Restart a container: docker restart &lt;container_id&gt;
+Remove a container: docker rm &lt;container_id&gt;
+Remove all stopped containers: docker container prune
+    </pre>
+
+    <h2>Working with Images</h2>
+    <pre>
+Pull an image from Docker Hub: docker pull &lt;image_name&gt;
+List all images: docker images
+Remove an image: docker rmi &lt;image_id&gt;:&lt;tag&gt;
+Remove all unused images: docker image prune -a
+    </pre>
+
+    <h2>Running Containers</h2>
+    <pre>
+Run a container in interactive mode: docker run -it &lt;image_name&gt; &lt;command&gt;
+Run a container in detached mode: docker run -d &lt;image_name&gt;
+Run a container with port mapping: docker run -p 8080:80 &lt;image_name&gt;
+Run a container with a volume: docker run -v /host/path:/container/path &lt;image_name&gt;
+    </pre>
+
+    <h2>Docker Networks</h2>
+    <pre>
+List networks: docker network ls
+For more advanced network management, commands like 'docker network create' and 'docker network connect' can be used. But I don't frequent them, so I have not added them here.
+    </pre>
+
+    <h2>Docker Compose</h2>
+    <pre>
+Start services: docker-compose up -d
+Stop services: docker-compose down
+Restart services: docker-compose restart
+View logs: docker-compose logs -f &lt;service_name&gt;
+    </pre>
+
+    <h2>Cleanup</h2>
+    <pre>
+To clean up unused Docker resources (containers, networks, images, volumes): 
+docker system prune -a
+    </pre>
+
+</div>
+
+<div class="footer">
+ 
+  <a href="https://github.com/AashishVarier" >
+    <i class="fa fa-github animate" style="font-size:36px" >&nbsp</i>
+    </a>
+  <a href="https://www.linkedin.com/in/aashish-varier-2b232489/" >
+    <i class="fa fa-linkedin-square animate" style="font-size:36px" >&nbsp</i>
+  </a>
+  <a href="https://twitter.com/arvariable" >
+    <i class="fa fa-twitter animate" style="font-size:36px" ></i>
+  </a>
+</div>
+<script type="text/javascript" src="../script/script.js"></script>
+</body>
+</html>
