@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="Expires" content="0" />
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="system design alert elasticsearch logstash kafka python">
+<meta name="keywords" content="system design alert elasticsearch logstash kafka python">
+<title>AashishVarierR : Designing an Alerter</title>
+
+<!-- Add Open Graph and Twitter Card meta tags for better social sharing -->
+<meta property="og:title" content="Designing an Alerter">
+<meta property="og:description" content="Designing an Alerter">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://aashishvarier.github.io/portfolio/blog/blog4.html">
+<meta property="og:image" content="https://aashishvarier.github.ioportfolio/blog/blog4.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Designing an Alerter">
+<meta name="twitter:description" content="Designing an Alerter">
+<meta name="twitter:image" content="https://aashishvarier.github.io/portfolio/blog/blog4.html">
+
+<!-- Add canonical URL to prevent duplicate content issues -->
+<link rel="canonical" href="https://aashishvarier.github.io/portfolio/blog/blog4.html">
+
+<!-- Include a robots meta tag to allow indexing -->
+<meta name="robots" content="index, follow">
+</head>
+<body>
+
+
+<div class="navbar">
+  <a href="../index.html" ><b>Aashish Varier R</b></a>
+  <a href="../html/blog.html" class="right active">Blog</a>
+  <a href="../html/project.html" class="right">Project</a>
+</div>
+<div class ="center">
+  <h1>Blog #4: Designing an Alerter</h1>
+  <h5>Date: Feb 09, 2025</h5>
+  <h6>Tag: Python, System Design</h6>
+
+  <h2>Introduction</h2>
+    <p>During work, I was tasked with designing and implementing an alerter tool to notify a specific set of users using an existing Elasticsearch database. The input came from an API gateway, which was fed into Elasticsearch. A Java program then fetched data from Elasticsearch and alerted users.</p>
+    <p>The issue was that since Elasticsearch and Logstash were open-source with licensing limitations, there were restrictions on the amount of data that could be processed. If Elasticsearch crashed, the API gateway was also affected. This project is an attempt to improve the design and add an additional feature that could be useful to the alerter.</p>
+
+    <h2>Tech Used</h2>
+    <ul>
+        <li>Docker Compose</li>
+        <li>Elasticsearch</li>
+        <li>Logstash</li>
+        <li>Kafka</li>
+        <li>Python</li>
+        <li>Flask</li>
+    </ul>
+
+    <h2>Improved design and component wise breakdown</h2>
+    <p>The following is an overview of what we are trying to build here:</p>
+    <img src="../image/blog4_1.JPG" alt="Improved Design Overview" />
+
+    <p>The source code can be found <a href="https://github.com/AashishVarier/alerter2.0">here</a></p>
+
+
+    <h3>Docker Compose</h3>
+    <p>We will be using Docker Compose to run our application. The <code> docker-compose.yml </code> will have services for elasticsearch, logstash , kafka and other microservices. A snip it of the same can be seen below. </p>
+      
+      <img src="../image/blog4_2.JPG" alt="Docker Compose Overview" />
+      
+      <p> We ensure that Kafka, microservices, and the Elastic Stack are in the same network (from the above image - <code>kafka-network</code>) so as to simulate deployment of services in various servers but in the same network. </p>
+      
+    <p><i>Usefull commands:</i></p>
+    <ul>
+        <li><code>docker-compose up -d</code> - Start the services in detached mode.</li>
+        <li><code>docker-compose down -v</code> - Stop and remove existing containers. The <code>-v</code> flag ensures volumes are removed for a clean start.</li>
+    </ul>
+
+    <h3>Synthetic Data</h3>
+    <p>The purpose here is to generate synthetic data. In our case the data will be resembling a generic API response. This module will also act as a kafka producer (i.e., a application that publishes (writes) events to a Kafka cluster).</p>
+
+    <p>We are using <code>confluent_kafka </code> python library in this project. Ofcourse other python library are available, but for our purpose <code>confluent_kafka </code> is well-suited for use with Confluent Cloud and Confluent Platform. Basically I am keeping in mind the enterprise applications, which relates to most of my work.</p>
+
+    <p> We will be configuring producer as follows </p>
+    <pre><code>
+      conf = {'bootstrap.servers':  '{kafka host}:{port}'}
+      producer = Producer(conf)
+    </code></pre>
+
+    <p> and publishing to our topic as follows </p>
+    <pre><code>
+    producer.produce('{topic}', key={key}, value = {message}, callback={function to handle kafka delivery report} )
+    producer.poll(0) # poll to handle delivery report
+    </code></pre>
+
+    <p>To ensure all messages are delivered (and to handle errors), it is good practice to wrap the producer in a try except finally block and placing <code>producer.flush()</code> in the finally block </p>
+
+    <p><i>Triggering Data Generation:</i></p>
+    <p>Use the following endpoint to generate data:</p>
+    <code>http://localhost:8080/data-gen/&lt;number-of-entries&gt;</code>
+    <p>This can be triggered via Postman or a <code>curl GET</code> request.</p>
+
+    <h3>Kafka</h3>
+    <p>Kafka can act as a buffer for data, allowing us to perform data aggregation and transformation before indexing it into Elasticsearch.</p>
+    <p>Kafka is running in Kraft mode (i.e., without Zookeeper as a controller). This is a fairly recent addition to kafka and based on the support seen, I believe this might the future direction of production ready deployment of kafka.</p>
+    <p>As such, some important configuration to keep in mind will be as follows: </p>
+
+    <pre>
+      <code>
+        - KAFKA_ENABLE_KRAFT=yes  # Enable KRaft mode (no ZooKeeper required)
+        - KAFKA_CFG_NODE_ID=1
+        - KAFKA_CFG_PROCESS_ROLES=controller,broker
+        - KAFKA_CFG_CONTROLLER_QUORUM_VOTERS=1@{kafka host}:9093
+      </code>
+    </pre>
+    <p><i>Kafka Topic Management:</i></p>
+    <ul>
+        <li>Create a topic without Zookeeper (if not done via producer code):</li>
+        <code>docker exec -it {kafka container name} kafka-topics.sh --create --topic raw-data-topic --bootstrap-server localhost:9092 --partitions 1 --replication-factor 1</code>
+        <li>List existing topics:</li>
+        <code>docker exec -it {kafka container name} kafka-topics.sh --list --bootstrap-server localhost:9092</code>
+    </ul>
+
+    <h3>Elasticsearch and Logstash</h3>
+    <p>We run these services using docker compose.</p>
+    <p>Assuming there are no filtration required, the <code>logstash.conf</code> can be as staright forward as below: </p>
+
+    <pre>
+      <code>
+        input {
+          kafka {
+            bootstrap_servers => "{kafka host}:{port}"
+            topics => ["{topic name}"]
+            codec => "json"
+          }
+        }
+        output {
+          elasticsearch {
+            hosts => ["http://{elasticsearch host}:{port}"]
+            index => "{index name}"
+          }
+          stdout { codec => rubydebug }  # Print logs for debugging
+        }
+      </code>
+    </pre>
+    <p><i>To check if data is being indexed in Elasticsearch:</i></p>
+    <code>curl -X GET "http://{elasticsearch host}:{port}/{index name}/_search?pretty"</code>
+
+    <h3>Incident Handling</h3>
+    <p>Primary purpose of this module is to fetch data from Elasticsearch based on queries. </p>
+    <p><i>Implementation Details:</i></p>
+    <ul>
+        <li>Query Elasticsearch for last 5 minutes of data.</li>
+        <pre>
+          <code>
+            query = {
+              "query" : {
+              "range": {
+                "@timestamp": {
+                  "gte": "now-5m/m",
+                  "lte": "now/m"
+                }
+              }
+            },
+              "_source" : [ "@timestamp", "message" ]
+                      }
+          </code>
+        </pre>
+        <li>Connects to Elasticsearch using the Python <code>elasticsearch</code> package and fetch based on the above mentioned query.</li>
+        <pre>
+          <code>
+          es =  Elasticsearch(f"http://{HOST}:{PORT}")
+
+          rel = scan(
+                client = es,
+                query = query,
+                index = '{index name}',
+                raise_on_error=True
+            )
+
+          result = list(rel)
+          </code>
+        </pre>
+        <li>Runs every ‘x’ seconds using <code>sleep()</code></li>
+    </ul>
+
+  <p><strong>We will discuss the anomaly detection module and alert module in a seperate blog.</strong></p>
+
+</div>
+
+<div class="footer">
+ 
+  <a href="https://github.com/AashishVarier" >
+    <i class="fa fa-github animate" style="font-size:36px" >&nbsp</i>
+    </a>
+  <a href="https://www.linkedin.com/in/aashish-varier-2b232489/" >
+    <i class="fa fa-linkedin-square animate" style="font-size:36px" >&nbsp</i>
+  </a>
+  <a href="https://twitter.com/arvariable" >
+    <i class="fa fa-twitter animate" style="font-size:36px" ></i>
+  </a>
+</div>
+<script type="text/javascript" src="../script/script.js"></script>
+</body>
+</html>
