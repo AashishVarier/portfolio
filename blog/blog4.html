@@ -63,6 +63,16 @@
 
     <p>The source code can be found <a href="https://github.com/AashishVarier/alerter2.0">here</a></p>
 
+    <h2>Overview </h2>
+    <ul>
+      <li> Synthetic Data : to generate data. This is the producer / publisher for Kafka.</li>
+      <li>Incident Handling : to identify incidents from data available in elasticsearch DB and trigger alerts.</li>
+      <li>Kafka: pub/sub which act as buffer for generated data.</li>
+      <li> Docker Compose: Used to simulate different servers and to ease the deployment of various services used in this project.</li>
+      <li> Elasticsearch and Logstash: Used as one of the consumer and storage for the generated data.</li>
+      <li>Anomaly Detection: uses windowing and aggregation functions along with isolation forest for anomaly detection.</li>
+      <li>Alerter: at present it is implemented as a separate module mainly to act as event based alerts.</li>
+    </ul>
 
     <h3>Docker Compose</h3>
     <p>We will be using Docker Compose to run our application. The <code> docker-compose.yml </code> will have services for elasticsearch, logstash , kafka and other microservices. A snip it of the same can be seen below. </p>
