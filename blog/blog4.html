@@ -58,13 +58,21 @@
         <li>Java</li>
         <li>Spring</li>
     </ul>
-    <p><i>NOTE:</i> we could have stuck with either java only stack or python only stack</p>
 
     <h2>Improved design and component wise breakdown</h2>
     <p>The following is an overview of what we are trying to build here:</p>
     <img src="../image/blog4_1.JPG" alt="Improved Design Overview" />
 
     <p>The source code can be found <a href="https://github.com/AashishVarier/alerter2.0">here</a></p>
+
+    <p><i>NOTE:</i> 
+      <ul>
+        <li>We could have stuck with either java only stack or python only stack. I have reused a Java notification service.</li>
+        <li>Only one kafka service is deployed in kraft mode. This is done considering that I am resource poor.</li>
+        <li>Only scalability and fault tolerance is considered during design. As for security, I have assumed that this will be a closed network.
+      </ul>
+      
+    </p>
 
     <h3>Overview </h3>
     <ul>
