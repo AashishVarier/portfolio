@@ -40,12 +40,12 @@
 </div>
 <div class ="center">
   <h1>Blog #4: Designing an Alerter</h1>
-  <h5>Date: Feb 09, 2025</h5>
+  <h5>Date: Jun 14, 2025 (Republished)</h5>
   <h6>Tag: Python, System Design</h6>
 
   <h2>Introduction</h2>
     <p>During work, I was tasked with designing and implementing an alerter tool to notify a specific set of users using an existing Elasticsearch database. The input came from an API gateway, which was fed into Elasticsearch. A Java program then fetched data from Elasticsearch and alerted users.</p>
-    <p>The issue was that since Elasticsearch and Logstash were open-source with licensing limitations, there were restrictions on the amount of data that could be processed. If Elasticsearch crashed, the API gateway was also affected. This project is an attempt to improve the design and add an additional feature that could be useful to the alerter.</p>
+    <p>The issue was that since Elasticsearch and Logstash were open-source with licensing limitations, there were restrictions on the amount of data that could be processed. If Elasticsearch crashed, the API gateway was also affected. This project is an attempt to improve the design.</p>
 
     <h2>Tech Used</h2>
     <ul>
@@ -55,8 +55,6 @@
         <li>Kafka</li>
         <li>Python</li>
         <li>Flask</li>
-        <li>Java</li>
-        <li>Spring</li>
     </ul>
 
     <h2>Improved design and component wise breakdown</h2>
@@ -67,9 +65,8 @@
 
     <p><i>NOTE:</i> 
       <ul>
-        <li>We could have stuck with either java only stack or python only stack. I have reused a Java notification service.</li>
-        <li>Only one kafka service is deployed in kraft mode. This is done considering that I am resource poor.</li>
-        <li>Only scalability and fault tolerance is considered during design. As for security, I have assumed that this will be a closed network.
+        <li>Only one kafka service is deployed in kraft mode. This is done with the understanding that I have been resource poor both then and now.</li>
+        <li>Only scalability and fault tolerance (within the limits of available resource) was considered during design. As for security, I have assumed that this will be a closed network.</li>
       </ul>
       
     </p>
@@ -81,8 +78,7 @@
       <li> Kafka: pub/sub which act as buffer for generated data.</li>
       <li> Docker Compose: Used to simulate different servers and to ease the deployment of various services used in this project.</li>
       <li> Elasticsearch and Logstash: Used as one of the consumer for raw data topic from kafka and as storage for the generated data.</li>
-      <li> Anomaly Detection: to consume raw data topic and use windowing along with isolation forest for anomaly detection.</li>
-      <li> Alerter: at present it is implemented as a separate module mainly to act as event based alerts from alert topic consumed from kafka.</li>
+      <li> Alerter: at present it is implemented as a separate incomplete module mainly to act as event based alerts from alert topic consumed from kafka.</li>
     </ul>
 
     <h3>Docker Compose</h3>
@@ -206,8 +202,26 @@
         <li>Runs every ‘x’ seconds using <code>sleep()</code></li>
     </ul>
 
-  <p><strong>We will discuss the anomaly detection module and alert module in a seperate blog.</strong></p>
+  <h3>Alert Module</h3>
+  <p>The purpose of this module is to fetch data from Kafka based on the topic writen by the Incident module. </p>
 
+      <p> We will be configuring consumer and subscribing to the topic as follows </p>
+    <pre><code>
+      conf = {'bootstrap.servers':  '{kafka host}:{port}'}
+      consumer = Consumer(conf)
+      consumer.subscribe([topic])
+    </code></pre>
+<p>And we can further proceed with adding logic for the consumer topic by polling</p>
+<pre><code>
+        while True:
+            msg = consumer.poll(1.0)  # timeout in seconds
+            if msg is None:
+                continue
+            if msg.error():
+                raise KafkaException(msg.error())
+            else:
+                message = msg.value().decode('utf-8')
+    </code></pre>
 </div>
 
 <div class="footer">
