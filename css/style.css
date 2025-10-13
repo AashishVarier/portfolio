@@ -104,11 +104,19 @@
     background-color: #aaa;
     padding: 30px;
     vertical-align:middle;
-    
-    
-    
+    border: 3px solid #666;
   }
 
+  .about-me {   
+    -ms-flex: 70%; /* IE10 */
+    flex: 70%;
+    background-color: #aaa;
+    padding: 50px;
+    vertical-align:middle;
+    border: 3px solid #666;
+    text-align: center;
+    
+  }
 
   /* Main column */
   .main {   
@@ -147,8 +155,10 @@
     height:250px;
     border-radius:50%;
     overflow:hidden;
+    align-items: center;  
     
   }
+
   /* Fake image, just for this example */
   .fakeimg {
     background-color: #aaa;
@@ -234,3 +244,33 @@ a:link {
   background-color: #666;
   color: white;
 }
+
+.insta-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  justify-items: center; 
+}
+
+.insta-grid blockquote.instagram-media {
+  max-width: 280px !important; /* smaller width */
+  width: 100%;
+  margin: 0 auto;
+  border: 0;
+  background-color: #3f3f3f !important;
+  border-radius: 10px; /* optional: smooth corners */
+  padding: 10px;       /* optional: spacing inside the embed */
+}
+ .insta-main {   
+    -ms-flex: 70%; /* IE10 */
+    flex: 70%;
+    background-color: #d2d2d2;
+    padding: 50px;
+    vertical-align:middle;
+    border: 3px solid #666;
+    
+    
+  }
