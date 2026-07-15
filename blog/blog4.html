@@ -3,45 +3,58 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AashishVarierR : Designing an Alerter</title>
+<meta name="description" content="Designing a scalable alerter as an event-driven ETL pipeline with Kafka in KRaft mode, Elasticsearch, Logstash, Python microservices and Docker Compose.">
+<meta name="keywords" content="system design alert elasticsearch logstash kafka python">
+<link rel="canonical" href="https://variableduck.com/blog/blog4.html">
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
 <meta http-equiv="Pragma" content="no-cache" />
 <meta http-equiv="Expires" content="0" />
-<link rel="stylesheet" href="../css/style.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="system design alert elasticsearch logstash kafka python">
-<meta name="keywords" content="system design alert elasticsearch logstash kafka python">
-<title>AashishVarierR : Designing an Alerter</title>
-
-<!-- Add Open Graph and Twitter Card meta tags for better social sharing -->
 <meta property="og:title" content="Designing an Alerter">
-<meta property="og:description" content="Designing an Alerter">
+<meta property="og:description" content="Designing a scalable alerter as an event-driven ETL pipeline with Kafka in KRaft mode, Elasticsearch, Logstash, Python microservices and Docker Compose.">
 <meta property="og:type" content="article">
-<meta property="og:url" content="https://aashishvarier.github.io/portfolio/blog/blog4.html">
-<meta property="og:image" content="https://aashishvarier.github.ioportfolio/blog/blog4.html">
-<meta name="twitter:card" content="summary_large_image">
+<meta property="og:url" content="https://variableduck.com/blog/blog4.html">
+<meta property="og:image" content="https://variableduck.com/image/blog4_1.JPG">
+<meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Designing an Alerter">
-<meta name="twitter:description" content="Designing an Alerter">
-<meta name="twitter:image" content="https://aashishvarier.github.io/portfolio/blog/blog4.html">
-
-<!-- Add canonical URL to prevent duplicate content issues -->
-<link rel="canonical" href="https://aashishvarier.github.io/portfolio/blog/blog4.html">
-
-<!-- Include a robots meta tag to allow indexing -->
+<meta name="twitter:description" content="Designing a scalable alerter as an event-driven ETL pipeline with Kafka in KRaft mode, Elasticsearch, Logstash, Python microservices and Docker Compose.">
+<meta name="twitter:image" content="https://variableduck.com/image/blog4_1.JPG">
 <meta name="robots" content="index, follow">
+<link rel="icon" type="image/png" href="../image/icon-removebg-preview.png">
+<link rel="alternate" type="application/rss+xml" title="Aashish Varier R : Blog" href="https://variableduck.com/feed.xml">
+<link rel="stylesheet" href="../css/style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Blog #4: Designing an Alerter",
+  "datePublished": "2025-06-14",
+  "author": {
+    "@type": "Person",
+    "name": "Aashish Varier R",
+    "url": "https://variableduck.com/"
+  },
+  "url": "https://variableduck.com/blog/blog4.html",
+  "mainEntityOfPage": "https://variableduck.com/blog/blog4.html",
+  "image": "https://variableduck.com/image/blog4_1.JPG"
+}
+</script>
 </head>
 <body>
 
+<header>
+  <nav class="nav-inner">
+    <a href="../index.html" class="home">Aashish Varier R</a>
+    <a href="../html/blog.html" aria-current="page">Blog</a>
+    <a href="../html/project.html">Project</a>
+  </nav>
+</header>
 
-<div class="navbar">
-  <a href="../index.html" ><b>Aashish Varier R</b></a>
-  <a href="../html/blog.html" class="right active">Blog</a>
-  <a href="../html/project.html" class="right">Project</a>
-</div>
-<div class ="center">
+<main>
+<article>
   <h1>Blog #4: Designing an Alerter</h1>
-  <h5>Date: Jun 14, 2025 (Republished)</h5>
-  <h6>Tag: Python, System Design</h6>
+  <p class="meta"><time datetime="2025-06-14">Date: Jun 14, 2025 (Republished)</time></p>
+  <p class="meta">Tag: Python, System Design</p>
 
   <h2>Introduction</h2>
     <p>During work, I was tasked with designing and implementing an alerter tool to notify a specific set of users using an existing Elasticsearch database. The input came from an API gateway, which was fed into Elasticsearch. A Java program then fetched data from Elasticsearch and alerted users.</p>
@@ -59,16 +72,16 @@
 
     <h2>Improved design and component wise breakdown</h2>
     <p>The following is an overview of what we are trying to build here:</p>
-    <img src="../image/blog4_1.JPG" alt="Improved Design Overview" />
+    <img src="../image/blog4_1.JPG" alt="Architecture diagram: a Synthetic Data microservice publishes to Kafka in KRaft mode; Logstash consumes the raw data topic into Elasticsearch; an Incident Detection microservice reads Elasticsearch and publishes an alert topic that the Alerter microservice consumes" />
 
     <p>The source code can be found <a href="https://github.com/AashishVarier/alerter2.0">here</a></p>
 
-    <p><i>NOTE:</i> 
+    <p><i>NOTE:</i>
       <ul>
         <li>Only one kafka service is deployed in kraft mode. This is done with the understanding that I have been resource poor both then and now.</li>
         <li>Only scalability and fault tolerance (within the limits of available resource) was considered during design. As for security, I have assumed that this will be a closed network.</li>
       </ul>
-      
+
     </p>
 
     <h3>Overview </h3>
@@ -83,11 +96,11 @@
 
     <h3>Docker Compose</h3>
     <p>We will be using Docker Compose to run our application. The <code> docker-compose.yml </code> will have services for elasticsearch, logstash , kafka and other microservices. A snip it of the same can be seen below. </p>
-      
-      <img src="../image/blog4_2.JPG" alt="Docker Compose Overview" />
-      
+
+      <img src="../image/blog4_2.JPG" alt="VS Code showing docker-compose.yml with collapsed service definitions for kafka, data-producer, incident, alert, elasticsearch and logstash, and a kafka-network bridge network" />
+
       <p> We ensure that Kafka, microservices, and the Elastic Stack are in the same network (from the above image - <code>kafka-network</code>) so as to simulate deployment of services in various servers but in the same network. </p>
-      
+
     <p><i>Usefull commands:</i></p>
     <ul>
         <li><code>docker-compose up -d</code> - Start the services in detached mode.</li>
@@ -222,20 +235,16 @@
             else:
                 message = msg.value().decode('utf-8')
     </code></pre>
-</div>
 
-<div class="footer">
- 
-  <a href="https://github.com/AashishVarier" >
-    <i class="fa fa-github animate" style="font-size:36px" >&nbsp</i>
-    </a>
-  <a href="https://www.linkedin.com/in/aashish-varier-2b232489/" >
-    <i class="fa fa-linkedin-square animate" style="font-size:36px" >&nbsp</i>
-  </a>
-  <a href="https://twitter.com/arvariable" >
-    <i class="fa fa-twitter animate" style="font-size:36px" ></i>
-  </a>
-</div>
-<script type="text/javascript" src="../script/script.js"></script>
+</article>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <a href="https://github.com/AashishVarier">GitHub</a>
+    <a href="https://www.linkedin.com/in/aashish-varier-2b232489/">LinkedIn</a>
+    <a href="https://twitter.com/arvariable">Twitter</a>
+  </div>
+</footer>
 </body>
 </html>

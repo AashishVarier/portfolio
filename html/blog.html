@@ -1,119 +1,157 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title> Hi, I'm Aashish &#128075;</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AashishVarierR : Blog</title>
+<meta name="description" content="Blog posts by Aashish Varier R on GitHub Pages, Chrome extensions, HuggingFace pretrained models, Docker, designing an alerter, and WSL2 dev setup.">
+<link rel="canonical" href="https://variableduck.com/html/blog.html">
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
 <meta http-equiv="Pragma" content="no-cache" />
 <meta http-equiv="Expires" content="0" />
+<meta property="og:title" content="AashishVarierR : Blog">
+<meta property="og:description" content="Blog posts by Aashish Varier R on GitHub Pages, Chrome extensions, HuggingFace pretrained models, Docker, designing an alerter, and WSL2 dev setup.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://variableduck.com/html/blog.html">
+<meta property="og:image" content="https://variableduck.com/image/intro.jpg">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="AashishVarierR : Blog">
+<meta name="twitter:description" content="Blog posts by Aashish Varier R on GitHub Pages, Chrome extensions, HuggingFace pretrained models, Docker, designing an alerter, and WSL2 dev setup.">
+<meta name="twitter:image" content="https://variableduck.com/image/intro.jpg">
+<link rel="icon" type="image/png" href="../image/icon-removebg-preview.png">
+<link rel="alternate" type="application/rss+xml" title="Aashish Varier R : Blog" href="https://variableduck.com/feed.xml">
 <link rel="stylesheet" href="../css/style.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Blog",
+  "name": "AashishVarierR : Blog",
+  "url": "https://variableduck.com/html/blog.html",
+  "author": {
+    "@type": "Person",
+    "name": "Aashish Varier R",
+    "url": "https://variableduck.com/"
+  },
+  "blogPost": [
+    {
+      "@type": "BlogPosting",
+      "headline": "#5 QuickLoad - One Script to Set Up a Fresh WSL2 Box",
+      "url": "https://variableduck.com/blog/blog5.html",
+      "datePublished": "2026-07-15"
+    },
+    {
+      "@type": "BlogPosting",
+      "headline": "#4 Designing an Alerter",
+      "url": "https://variableduck.com/blog/blog4.html",
+      "datePublished": "2025-06-14"
+    },
+    {
+      "@type": "BlogPosting",
+      "headline": "#3 Docker Cheat Sheet",
+      "url": "https://variableduck.com/blog/blog3.html",
+      "datePublished": "2025-01-05"
+    },
+    {
+      "@type": "BlogPosting",
+      "headline": "#2 Finding and Using Pretrained Models from HuggingFace",
+      "url": "https://variableduck.com/blog/blog2.html",
+      "datePublished": "2024-10-19"
+    },
+    {
+      "@type": "BlogPosting",
+      "headline": "#1 Extension 101",
+      "url": "https://variableduck.com/blog/blog1.html",
+      "datePublished": "2023-10-29"
+    },
+    {
+      "@type": "BlogPosting",
+      "headline": "#0 How to use Github Pages?",
+      "url": "https://variableduck.com/blog/blog0.html",
+      "datePublished": "2023-09-19"
+    }
+  ]
+}
+</script>
 </head>
 <body>
 
+<header>
+  <nav class="nav-inner">
+    <a href="../index.html" class="home">Aashish Varier R</a>
+    <a href="blog.html" aria-current="page">Blog</a>
+    <a href="project.html">Project</a>
+  </nav>
+</header>
 
-<div class="navbar">
-  <a href="../index.html" ><b>Aashish Varier R</b></a>
-  <a href="blog.html" class="right active">Blog</a>
-  <a href="project.html" class="right">Project</a>
-</div>
+<main>
+  <h1>Blog</h1>
 
-<div class="fliter" >
-  <a>Filter by topic:</a>
-  <div id="myBtnContainer">
-    <button class="btn active" onclick="filterSelection('all')" >Show all</button>
-    <!--<button class="btn" onclick="filterSelection('reivew')" >Reivew</button>
-    <button class="btn" onclick="filterSelection('java')" >Java</button>
-    <button class="btn" onclick="filterSelection('springboot')" >SpringBoot</button>-->
-    <button class="btn" onclick="filterSelection('python')" >Python</button>
-    <button class="btn" onclick="filterSelection('machinelearning')" >Machine Learning</button>
-    <button class="btn" onclick="filterSelection('chromeextention')" >Chrome Extention</button> 
-    <button class="btn" onclick="filterSelection('htmlcss')">HTML/CSS</button>
-    <button class="btn" onclick="filterSelection('git')">Git</button>
-    <button class="btn" onclick="filterSelection('docker')" >Docker</button>
-    <button class="btn" onclick="filterSelection('sd')" >System Design</button>
-    <button class="btn" onclick="filterSelection('bash')" >Bash</button>
-  </div>
-</div>
-<!--3 column per class ="row"-->
-<div class="row">
-
-  <div class="center bash"  onclick="window.location.href = '../blog/blog5.html';">
-    <h2>#5 QuickLoad - One Script to Set Up a Fresh WSL2 Box</h2>
-    <h5>Date: Jul 15, 2026</h5>
-    <h6>Tag: Bash, WSL</h6>
-
-    <p>A single interactive bash script that sets up my usual dev stack (Git, Java, Docker, KinD, Elastic, Node, Postgres and more) on a fresh WSL2 Ubuntu box. The repo is archived, but it is self-contained and might still save you an afternoon of setup.</p>
+  <div class="filter" role="group" aria-label="Filter by topic">
+    <span class="filter-label">Filter by topic:</span>
+    <button class="active" data-filter="all" aria-pressed="true">Show all</button>
+    <button data-filter="python" aria-pressed="false">Python</button>
+    <button data-filter="machinelearning" aria-pressed="false">Machine Learning</button>
+    <button data-filter="chromeextention" aria-pressed="false">Chrome Extention</button>
+    <button data-filter="git" aria-pressed="false">Git</button>
+    <button data-filter="docker" aria-pressed="false">Docker</button>
+    <button data-filter="sd" aria-pressed="false">System Design</button>
+    <button data-filter="bash" aria-pressed="false">Bash</button>
   </div>
 
-  <div class="center python sd"  onclick="window.location.href = '../blog/blog4.html';">
-    <h2>#4 Designing an Alerter</h2>
-    <h5>Date: Jun 14, 2025</h5>
-    <h6>Tag: Python, System Design</h6> 
-    
-    <p>A scalable ETL pipeline using event-driven architecture for real-time data processing, which have components for synthetic data generation, pub-sub, and alerting.</p>
+  <ul class="post-list">
+
+    <li class="bash">
+      <h2><a href="../blog/blog5.html">#5 QuickLoad - One Script to Set Up a Fresh WSL2 Box</a></h2>
+      <p class="meta"><time datetime="2026-07-15">Date: Jul 15, 2026</time></p>
+      <p class="meta">Tag: Bash, WSL</p>
+      <p>A single interactive bash script that sets up my usual dev stack (Git, Java, Docker, KinD, Elastic, Node, Postgres and more) on a fresh WSL2 Ubuntu box. The repo is archived, but it is self-contained and might still save you an afternoon of setup.</p>
+    </li>
+
+    <li class="python sd">
+      <h2><a href="../blog/blog4.html">#4 Designing an Alerter</a></h2>
+      <p class="meta"><time datetime="2025-06-14">Date: Jun 14, 2025</time></p>
+      <p class="meta">Tag: Python, System Design</p>
+      <p>A scalable ETL pipeline using event-driven architecture for real-time data processing, which have components for synthetic data generation, pub-sub, and alerting.</p>
+    </li>
+
+    <li class="docker">
+      <h2><a href="../blog/blog3.html">#3 Docker Cheat Sheet</a></h2>
+      <p class="meta"><time datetime="2025-01-05">Date: Jan 05, 2025</time></p>
+      <p class="meta">Tag: Docker</p>
+      <p>Docker cheat sheet of commands that I frequent</p>
+    </li>
+
+    <li class="python machinelearning">
+      <h2><a href="../blog/blog2.html">#2 Finding and Using Pretrained Models from HuggingFace</a></h2>
+      <p class="meta"><time datetime="2024-10-19">Date: Oct 19, 2024</time></p>
+      <p class="meta">Tag: Python, Machine Learning</p>
+      <p>Usefull notes to find and deploy a pre-trained machine learning model from HuggingFace, including translation tasks using Helsinki-NLP/opus-mt-mul-en. Also contains usefully tips on Python venv and TensorFlow setup to use HuggingFace.</p>
+    </li>
+
+    <li class="chromeextention">
+      <h2><a href="../blog/blog1.html">#1 Extension 101</a></h2>
+      <p class="meta"><time datetime="2023-10-29">Date: Oct 29, 2023</time></p>
+      <p class="meta">Tag: Chrome Extention</p>
+      <p>A concise quick reference guide on Chrome Extention. </p>
+    </li>
+
+    <li class="git">
+      <h2><a href="../blog/blog0.html">#0 How to use Github Pages?</a></h2>
+      <p class="meta"><time datetime="2023-09-19">Date: Sep 19, 2023</time></p>
+      <p class="meta">Tag: GitHub</p>
+      <p>GitHub Pages is a free hosting service provided by GitHub that allows you to showcase your web development projects, personal blogs, or documentation directly from your GitHub repository</p>
+    </li>
+
+  </ul>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <a href="https://github.com/AashishVarier">GitHub</a>
+    <a href="https://www.linkedin.com/in/aashish-varier-2b232489/">LinkedIn</a>
+    <a href="https://twitter.com/arvariable">Twitter</a>
   </div>
-
-  <div class="center docker"  onclick="window.location.href = '../blog/blog3.html';">
-    <h2>#3 Docker Cheat Sheet</h2>
-    <h5>Date: Jan 05, 2025</h5>
-    <h6>Tag: Docker </h6> 
-    
-    <p>Docker cheat sheet of commands that I frequent</p>
-  </div>
-
-
-
-
-
-
-</div>
-
-<div class="row">
-
-  <div class="center python machinelearning"  onclick="window.location.href = '../blog/blog2.html';">
-    <h2>#2 Finding and Using Pretrained Models from HuggingFace</h2>
-    <h5>Date: Oct 19, 2024</h5>
-    <h6>Tag: Python, Machine Learning </h6>
-
-    <p>Usefull notes to find and deploy a pre-trained machine learning model from HuggingFace, including translation tasks using Helsinki-NLP/opus-mt-mul-en. Also contains usefully tips on Python venv and TensorFlow setup to use HuggingFace.</p>
-  </div>
-
-  <div class="center chromeextention"  onclick="window.location.href = '../blog/blog1.html';">
-    <h2>#1 Extension 101</h2>
-    <h5>Date: Oct 29, 2023</h5>
-    <h6>Tag: Chrome Extention </h6> 
-
-    <p>A concise quick reference guide on Chrome Extention. </p>
-  
-  </div>
-  
-  
-  <div class="center git"  onclick="window.location.href = '../blog/blog0.html';">
-    <h2>#0 How to use Github Pages?</h2>
-    <h5>Date: Sep 19, 2023</h5>
-    <h6>Tag: GitHub </h6> 
-    
-    <p>GitHub Pages is a free hosting service provided by GitHub that allows you to showcase your web development projects, personal blogs, or documentation directly from your GitHub repository</p>
-  </div>
- <div></div>
- <div></div>
-
-</div>
-
-<div class="footer">
-  
-  <a href="https://github.com/AashishVarier" >
-    <i class="fa fa-github animate" style="font-size:36px" >&nbsp</i>
-    </a>
-  <a href="https://www.linkedin.com/in/aashish-varier-2b232489/" >
-    <i class="fa fa-linkedin-square animate" style="font-size:36px" >&nbsp</i>
-  </a>
-  <a href="https://twitter.com/arvariable" >
-    <i class="fa fa-twitter animate" style="font-size:36px" ></i>
-  </a>
-</div>
-<script type="text/javascript" src="../script/script.js"></script>
+</footer>
+<script src="../script/script.js"></script>
 </body>
 </html>

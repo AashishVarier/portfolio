@@ -1,111 +1,114 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title> Hi, I'm Aashish  &#128075;</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<title> Hi, I'm Aashish  &#128075;</title>
+<meta name="description" content="Personal site of Aashish Varier R, a software engineer based in India who builds cloud-ready applications. Projects, blog posts and film photography highlights.">
+<link rel="canonical" href="https://variableduck.com/">
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
 <meta http-equiv="Pragma" content="no-cache" />
 <meta http-equiv="Expires" content="0" />
+<meta property="og:title" content="Hi, I'm Aashish &#128075;">
+<meta property="og:description" content="Personal site of Aashish Varier R, a software engineer based in India who builds cloud-ready applications. Projects, blog posts and film photography highlights.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://variableduck.com/">
+<meta property="og:image" content="https://variableduck.com/image/intro.jpg">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hi, I'm Aashish &#128075;">
+<meta name="twitter:description" content="Personal site of Aashish Varier R, a software engineer based in India who builds cloud-ready applications. Projects, blog posts and film photography highlights.">
+<meta name="twitter:image" content="https://variableduck.com/image/intro.jpg">
+<link rel="icon" type="image/png" href="image/icon-removebg-preview.png">
+<link rel="alternate" type="application/rss+xml" title="Aashish Varier R : Blog" href="https://variableduck.com/feed.xml">
 <link rel="stylesheet" href="css/style.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Aashish Varier R",
+  "jobTitle": "Software Engineer",
+  "url": "https://variableduck.com/",
+  "image": "https://variableduck.com/image/intro.jpg",
+  "address": {
+    "@type": "PostalAddress",
+    "addressCountry": "IN"
+  },
+  "sameAs": [
+    "https://github.com/AashishVarier",
+    "https://www.linkedin.com/in/aashish-varier-2b232489/",
+    "https://twitter.com/arvariable",
+    "https://www.instagram.com/aashish.varier/"
+  ]
+}
+</script>
 </head>
 <body>
 
+<header>
+  <nav class="nav-inner">
+    <a href="index.html" class="home" aria-current="page">Aashish Varier R</a>
+    <a href="html/blog.html">Blog</a>
+    <a href="html/project.html">Project</a>
+  </nav>
+</header>
 
-<div class="navbar">
-  <a href="index.html" class="active"><b>Aashish Varier R</b></a>
-  <a href="html/blog.html" class="right">Blog</a>
-  <a href="html/project.html" class="right">Project</a>
-</div>
-<div class="row">
-  <div class="about-me">
-    <img src="image/intro.jpg" alt="Avatar" width="250" class="avatar" >
-    <h2>About Me</h2>
+<main>
+  <section>
+    <img src="image/intro.jpg" alt="Pixel-art style portrait of Aashish Varier smiling and wearing glasses" width="250" height="250" class="avatar">
+    <h1>About Me</h1>
     <p>Hi &#128075; ! My name is Aashish. I'm a Software Engineer based in India.</p>
-    <p> I can build cloud-ready application. </p> 
+    <p> I can build cloud-ready application. </p>
     <p> I can code it up  &#128296; , I can test it end to end &#128269; And am always eager to learn more. &#128218;</p>
 
     <p>Currently, I am working on a <a href=""> <b>Binary Artifact Service </b> </a></p>
 
     <p>When I am not coding, you can find me capturing moments on film &#128248;. Some of my favorite shots are highlighted below or on my <a href="https://www.instagram.com/aashish.varier/">Insta </a> .</p>
-    
-  </div>
-</div>
-<div class="row">
+  </section>
 
-
-  <div class="main" onclick="window.location.href = 'blog/blog5.html';">
+  <section>
     <h2>Latest Blog:</h2>
-    <h3>#5 QuickLoad - One Script to Set Up a Fresh WSL2 Box</h3>
-    <h5>Date: Jul 15, 2026</h5>
+    <h3><a href="blog/blog5.html">#5 QuickLoad - One Script to Set Up a Fresh WSL2 Box</a></h3>
+    <p class="meta"><time datetime="2026-07-15">Date: Jul 15, 2026</time></p>
     <p>A single interactive bash script that sets up my usual dev stack (Git, Java, Docker, KinD, Elastic, Node, Postgres and more) on a fresh WSL2 Ubuntu box, with pre-flight checks, idempotent installers and a pass/skip/fail summary at the end. The repo is archived, but it is self-contained and might still save you an afternoon of setup.</p>
-    <br>
+  </section>
 
-
-  </div>
-
-  </div>
-  <div class="row">
-
-  <div class="main" onclick="window.location.href = 'https://github.com/AashishVarier/alerter2.0';">
+  <section>
     <h2>Highlighted Project:</h2>
-    <h3>#3 Alerter 2.0</h3>
+    <h3><a href="https://github.com/AashishVarier/alerter2.0">#3 Alerter 2.0</a></h3>
     <p>A scalable ETL pipeline using event-driven architecture for real-time data processing, which have components for synthetic data generation, pub-sub, anomaly detection, alerting and front-end.</p>
-    <br>
-  </div>
+  </section>
 
-</div>
-
-<div class="row">
-
-  <div class="insta-main">
+  <section>
     <h2>Film Photography Highlights</h2>
     <p>I like taking film photos. Here are some highlights from Instagram 📸</p>
     <div class="insta-grid">
-    
 
-    <blockquote 
-      class="instagram-media" 
-      data-instgrm-permalink="https://www.instagram.com/p/DPCI6FuEmLP/" 
-      data-instgrm-version="14">
-    </blockquote>
+      <a href="https://www.instagram.com/p/DPCI6FuEmLP/">
+        <img src="image/insta1.jpg" alt="Close-up of an Olympus Pen half-frame film camera with a silver top plate and black body, lens cap on" width="640" height="640" loading="lazy">
+      </a>
 
-    <blockquote 
-      class="instagram-media" 
-      data-instgrm-permalink="https://www.instagram.com/p/DKJjWWiybQE/" 
-      data-instgrm-version="14">
-    </blockquote>
+      <a href="https://www.instagram.com/p/DKJjWWiybQE/">
+        <img src="image/insta2.jpg" alt="Film photograph of high-rise apartment buildings against a bright sky, with palm trees in the foreground" width="640" height="640" loading="lazy">
+      </a>
 
-    <blockquote 
-      class="instagram-media" 
-      data-instgrm-permalink="https://www.instagram.com/p/DPCFVXAEurB/" 
-      data-instgrm-version="14">
-    </blockquote>
+      <a href="https://www.instagram.com/p/DPCFVXAEurB/">
+        <img src="image/insta3.jpg" alt="Close-up of a black Konica Pop 35mm film camera in front of a blurred room" width="640" height="640" loading="lazy">
+      </a>
 
-    <blockquote 
-      class="instagram-media" 
-      data-instgrm-permalink="https://www.instagram.com/p/DL99a-wybWb/" 
-      data-instgrm-version="14">
-    </blockquote>
+      <a href="https://www.instagram.com/p/DL99a-wybWb/">
+        <img src="image/insta4.jpg" alt="Film photograph of a temple wall sculpture of Krishna dancing on a serpent, lit by two lamps above" width="640" height="640" loading="lazy">
+      </a>
 
     </div>
-  </div>
-</div>
-<!-- Instagram embed script -->
-<script async src="https://www.instagram.com/embed.js"></script>
+  </section>
+</main>
 
-<div class="footer">
-   
-  <a href="https://github.com/AashishVarier" >
-    <i class="fa fa-github animate" style="font-size:36px" >&nbsp</i>
-    </a>
-  <a href="https://www.linkedin.com/in/aashish-varier-2b232489/" >
-    <i class="fa fa-linkedin-square animate" style="font-size:36px" >&nbsp</i>
-  </a>
-  <a href="https://twitter.com/arvariable" >
-    <i class="fa fa-twitter animate" style="font-size:36px" ></i>
-  </a>
+<footer>
+  <div class="footer-inner">
+    <a href="https://github.com/AashishVarier">GitHub</a>
+    <a href="https://www.linkedin.com/in/aashish-varier-2b232489/">LinkedIn</a>
+    <a href="https://twitter.com/arvariable">Twitter</a>
   </div>
+</footer>
 </body>
 </html>

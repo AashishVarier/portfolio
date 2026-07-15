@@ -3,45 +3,57 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AashishVarierR : QuickLoad</title>
+<meta name="description" content="QuickLoad is a single interactive bash script that sets up a dev stack (Git, Java, Docker, KinD, Elastic, Node, Postgres and more) on a fresh WSL2 Ubuntu box, with pre-flight checks, idempotent installers and a pass/skip/fail summary.">
+<meta name="keywords" content="bash script wsl2 ubuntu dev setup docker kind elasticsearch java node">
+<link rel="canonical" href="https://variableduck.com/blog/blog5.html">
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
 <meta http-equiv="Pragma" content="no-cache" />
 <meta http-equiv="Expires" content="0" />
-<link rel="stylesheet" href="../css/style.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="bash script wsl2 ubuntu dev setup docker kind elasticsearch java node">
-<meta name="keywords" content="bash script wsl2 ubuntu dev setup docker kind elasticsearch java node">
-<title>AashishVarierR : QuickLoad</title>
-
-<!-- Add Open Graph and Twitter Card meta tags for better social sharing -->
 <meta property="og:title" content="QuickLoad">
-<meta property="og:description" content="QuickLoad">
+<meta property="og:description" content="QuickLoad is a single interactive bash script that sets up a dev stack (Git, Java, Docker, KinD, Elastic, Node, Postgres and more) on a fresh WSL2 Ubuntu box, with pre-flight checks, idempotent installers and a pass/skip/fail summary.">
 <meta property="og:type" content="article">
-<meta property="og:url" content="https://aashishvarier.github.io/portfolio/blog/blog5.html">
-<meta property="og:image" content="https://aashishvarier.github.ioportfolio/blog/blog5.html">
-<meta name="twitter:card" content="summary_large_image">
+<meta property="og:url" content="https://variableduck.com/blog/blog5.html">
+<meta property="og:image" content="https://variableduck.com/image/intro.jpg">
+<meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="QuickLoad">
-<meta name="twitter:description" content="QuickLoad">
-<meta name="twitter:image" content="https://aashishvarier.github.io/portfolio/blog/blog5.html">
-
-<!-- Add canonical URL to prevent duplicate content issues -->
-<link rel="canonical" href="https://aashishvarier.github.io/portfolio/blog/blog5.html">
-
-<!-- Include a robots meta tag to allow indexing -->
+<meta name="twitter:description" content="QuickLoad is a single interactive bash script that sets up a dev stack (Git, Java, Docker, KinD, Elastic, Node, Postgres and more) on a fresh WSL2 Ubuntu box, with pre-flight checks, idempotent installers and a pass/skip/fail summary.">
+<meta name="twitter:image" content="https://variableduck.com/image/intro.jpg">
 <meta name="robots" content="index, follow">
+<link rel="icon" type="image/png" href="../image/icon-removebg-preview.png">
+<link rel="alternate" type="application/rss+xml" title="Aashish Varier R : Blog" href="https://variableduck.com/feed.xml">
+<link rel="stylesheet" href="../css/style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Blog #5: QuickLoad - One Script to Set Up a Fresh WSL2 Box",
+  "datePublished": "2026-07-15",
+  "author": {
+    "@type": "Person",
+    "name": "Aashish Varier R",
+    "url": "https://variableduck.com/"
+  },
+  "url": "https://variableduck.com/blog/blog5.html",
+  "mainEntityOfPage": "https://variableduck.com/blog/blog5.html"
+}
+</script>
 </head>
 <body>
 
+<header>
+  <nav class="nav-inner">
+    <a href="../index.html" class="home">Aashish Varier R</a>
+    <a href="../html/blog.html" aria-current="page">Blog</a>
+    <a href="../html/project.html">Project</a>
+  </nav>
+</header>
 
-<div class="navbar">
-  <a href="../index.html" ><b>Aashish Varier R</b></a>
-  <a href="../html/blog.html" class="right active">Blog</a>
-  <a href="../html/project.html" class="right">Project</a>
-</div>
-<div class ="center">
+<main>
+<article>
   <h1>Blog #5: QuickLoad - One Script to Set Up a Fresh WSL2 Box</h1>
-  <h5>Date: Jul 15, 2026</h5>
-  <h6>Tag: Bash, WSL</h6>
+  <p class="meta"><time datetime="2026-07-15">Date: Jul 15, 2026</time></p>
+  <p class="meta">Tag: Bash, WSL</p>
 
   <h2>Introduction</h2>
     <p>Every time I reset a WSL distro (which happens more often than I would like to admit), I end up searching for the same install commands all over again. The Docker GPG key steps, the nvm curl command, the Elasticsearch apt repo and so on. After doing this hunt one too many times, I put all of it into a single interactive bash script and called it QuickLoad.</p>
@@ -95,20 +107,15 @@
     <h2>On archiving it</h2>
     <p>I have marked the repo as archived because I know myself well enough to admit I will not be keeping the install steps current. Setup scripts like this rot quietly - the script does not change, the internet underneath it does. But since it is a single file with no dependencies on anything of mine, it felt more useful left up as-is than deleted. If a component fails, the log and the summary should point you to the exact step, and fixing one installer function is usually a small edit.</p>
 
-</div>
+</article>
+</main>
 
-<div class="footer">
-
-  <a href="https://github.com/AashishVarier" >
-    <i class="fa fa-github animate" style="font-size:36px" >&nbsp</i>
-    </a>
-  <a href="https://www.linkedin.com/in/aashish-varier-2b232489/" >
-    <i class="fa fa-linkedin-square animate" style="font-size:36px" >&nbsp</i>
-  </a>
-  <a href="https://twitter.com/arvariable" >
-    <i class="fa fa-twitter animate" style="font-size:36px" ></i>
-  </a>
-</div>
-<script type="text/javascript" src="../script/script.js"></script>
+<footer>
+  <div class="footer-inner">
+    <a href="https://github.com/AashishVarier">GitHub</a>
+    <a href="https://www.linkedin.com/in/aashish-varier-2b232489/">LinkedIn</a>
+    <a href="https://twitter.com/arvariable">Twitter</a>
+  </div>
+</footer>
 </body>
 </html>

@@ -1,276 +1,254 @@
+/* Dark-only minimal theme.
+   Palette: bg #0d0d0d, text #e5e5e5, muted #a3a3a3, accent #8ab4f8.
+   All combinations meet WCAG AA on the background. */
+
+:root {
+  --bg: #0d0d0d;
+  --surface: #161616;
+  --border: #262626;
+  --text: #e5e5e5;
+  --muted: #a3a3a3;
+  --accent: #8ab4f8;
+}
+
 * {
-    box-sizing: border-box;
-  }
-  
-  /* Style the body */
-  body {
-    font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    margin: 0;
-    background-color: #aaa;
-
-  }
-  
-  /* Header/logo Title */
-  .header {
-    padding: 80px;
-    text-align: center;
-    background-image: url(../image/banner.jpg);
-    background-size:contain;
-    background-repeat:round;
-    color: white;
-  }
-  
-  /* Increase the font size of the heading */
-  .header h1 {
-    font-size: 40px;
-  }
-  
-  /* Sticky navbar - toggles between relative and fixed, depending on the scroll position. It is positioned relative until a given offset position is met in the viewport - then it "sticks" in place (like position:fixed). The sticky value is not supported in IE or Edge 15 and earlier versions. However, for these versions the navbar will inherit default position */
-  .navbar {
-    overflow: hidden;
-    background-color: #333;
-    position: sticky;
-    position: -webkit-sticky;
-    top: 0;
-  }
-  
-  .fliter {
-    overflow: hidden;
-    background-color: #666;
-    position: sticky;
-    position: -webkit-sticky;
-    top: 0;
-  }
-  /* Style the navigation bar links */
-  .navbar a {
-    float: left;
-    display: block;
-    color: white;
-    text-align: center;
-    padding: 14px 20px;
-    text-decoration: none;
-  }
-
-  .fliter a {
-    float: left;
-    display: block;
-    color: white;
-    text-align: center;
-    padding: 14px 20px;
-    text-decoration: none;
-  }
-  
-  
-  /* Right-aligned link */
-  .navbar a.right {
-    float: right;
-  }
-  
-  
-  /* Change color on hover */
-  .navbar a:hover {
-    background-color: #ddd;
-    color: black;
-  }
-  .filter a:hover {
-    background-color: #ddd;
-    color: black;
-  }
-  
-  /* Active/current link */
-  .navbar a.active {
-    background-color: #666;
-    color: white;
-  }
-
-  .filter a.active {
-    background-color: #666;
-    color: white;
-  }
-  
-  /* Column container */
-  .row {  
-    display: -ms-flexbox; /* IE10 */
-    display: flex;
-    -ms-flex-wrap: wrap; /* IE10 */
-    flex-wrap: wrap;
-  }
-  
-  /* Create two unequal columns that sits next to each other */
-  /* Sidebar/left column */
-  .side {
-    -ms-flex: 30%; /* IE10 */
-    flex: 30%;
-    background-color: #aaa;
-    padding: 30px;
-    vertical-align:middle;
-    border: 3px solid #666;
-  }
-
-  .about-me {   
-    -ms-flex: 70%; /* IE10 */
-    flex: 70%;
-    background-color: #aaa;
-    padding: 50px;
-    vertical-align:middle;
-    border: 3px solid #666;
-    text-align: center;
-    
-  }
-
-  /* Main column */
-  .main {   
-    -ms-flex: 70%; /* IE10 */
-    flex: 70%;
-    background-color: #f1f1f1;
-    padding: 50px;
-    vertical-align:middle;
-    border: 3px solid #666;
-    
-    
-  }
-  .main:hover {
-    background-color: #ddd;
-    color: black;
-  }
-  .center {   
-    -ms-flex: 30%; /* IE10 */
-    flex:30%;
-    background-color: #f1f1f1;
-    padding: 100px;
-    vertical-align:middle;
-    border: 3px solid #666;
-    display: none;
-  }
-
-  .center:hover {
-    background-color: #ddd;
-    color: black;
-  }
-
-  
-  /*Avatar*/
-  .avatar {
-    width:250px;
-    height:250px;
-    border-radius:50%;
-    overflow:hidden;
-    align-items: center;  
-    
-  }
-
-  /* Fake image, just for this example */
-  .fakeimg {
-    background-color: #aaa;
-    width: 100%;
-    padding: 20px;
-  }
-  
-  /* Footer */
-  .footer {
-    padding: 20px;
-    text-align: center;
-    background: #333; /* #ddd; */
-    position: fixed;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-  
-  }
- /*animate*/
- .animate {
-  -webkit-animation: animate_cl 5s;
-  animation: animate_cl 5s;
-  -webkit-animation-iteration-count: infinite;
-  animation-iteration-count: infinite;
+  box-sizing: border-box;
 }
 
-@keyframes animate_cl {
-  0%   {color:red;}
-  50%  {color:blue;}
-  100% {color:red;}
+body {
+  margin: 0;
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-size: 1rem;
+  line-height: 1.7;
+  -webkit-text-size-adjust: 100%;
 }
 
-@-webkit-keyframes animate_cl {
-  0%   {color:red;}
-  50%  {color:blue;}
-  100% {color:red;}
-} 
-
-
-  /* Responsive layout - when the screen is less than 700px wide, make the two columns stack on top of each other instead of next to each other */
-  @media screen and (max-width: 700px) {
-    .row {   
-      flex-direction: column;
-    }
-  }
-  
-  /* Responsive layout - when the screen is less than 400px wide, make the navigation links stack on top of each other instead of next to each other */
-  @media screen and (max-width: 400px) {
-    .navbar a {
-      float: none;
-      width: 100%;
-    }
-  }
-  @media screen and (max-width: 400px) {
-    .filter a {
-      float: none;
-      width: 100%;
-    }
-  }
-/*remove link underline  */
-a:link {
-    text-decoration: none;    
-}
-/* The "show" class is added to the filtered elements */
-.show {
-  display: block;
+/* Single-column content width shared by nav, main and footer */
+.nav-inner,
+main,
+.footer-inner {
+  max-width: 42rem;
+  margin: 0 auto;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
 }
 
-/* Style the buttons */
-.btn {
-  border: none;
-  outline: none;
-  padding: 12px 16px;
-  background-color: #f1f1f1;
+/* Top nav */
+header {
+  border-bottom: 1px solid var(--border);
+}
+
+.nav-inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 1.25rem;
+  padding-top: 0.9rem;
+  padding-bottom: 0.9rem;
+}
+
+.nav-inner a {
+  color: var(--muted);
+  text-decoration: none;
+}
+
+.nav-inner a:hover {
+  color: var(--accent);
+}
+
+.nav-inner a.home {
+  color: var(--text);
+  font-weight: 600;
+  margin-right: auto;
+}
+
+.nav-inner a[aria-current="page"] {
+  color: var(--text);
+}
+
+/* Main content */
+main {
+  padding-top: 2.5rem;
+  padding-bottom: 4rem;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 600;
+  line-height: 1.3;
+  margin: 2rem 0 0.5rem;
+}
+
+h1 { font-size: 1.5rem; margin-top: 0; }
+h2 { font-size: 1.25rem; }
+h3 { font-size: 1.1rem; }
+h4, h5, h6 { font-size: 1rem; }
+
+p, ul, ol {
+  margin: 0 0 1rem;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* Post/project metadata lines (dates, tags) */
+.meta {
+  color: var(--muted);
+  font-size: 0.875rem;
+  margin: 0 0 0.15rem;
+}
+
+/* Tag filter on the blog and project lists */
+.filter {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.5rem;
+  margin: 0 0 2.25rem;
+}
+
+.filter-label {
+  color: var(--muted);
+  font-size: 0.875rem;
+  margin-right: 0.25rem;
+}
+
+.filter button {
+  font: inherit;
+  font-size: 0.875rem;
+  color: var(--muted);
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 0.1rem 0.7rem;
   cursor: pointer;
 }
 
-.btn:hover {
-  background-color: #ddd;
+.filter button:hover {
+  color: var(--accent);
+  border-color: var(--accent);
 }
 
-.btn.active {
-  background-color: #666;
-  color: white;
+.filter button.active {
+  color: var(--bg);
+  background-color: var(--accent);
+  border-color: var(--accent);
 }
 
+/* Simple linked lists for blog posts and projects */
+.post-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.post-list > li {
+  margin: 0 0 2.25rem;
+}
+
+.post-list h2 {
+  font-size: 1.15rem;
+  margin: 0 0 0.15rem;
+}
+
+.post-list p {
+  margin: 0.35rem 0 0;
+}
+
+.post-list ul {
+  margin: 0.35rem 0 0;
+}
+
+/* Images */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+.avatar {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+}
+
+/* Code */
+pre {
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 1rem;
+  overflow-x: auto;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  margin: 0 0 1rem;
+}
+
+code {
+  font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace;
+  font-size: 0.9em;
+  background-color: var(--surface);
+  padding: 0.1em 0.3em;
+  border-radius: 4px;
+}
+
+pre code {
+  background: none;
+  padding: 0;
+}
+
+/* Film photo grid on the home page; each photo links to its Instagram post */
 .insta-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+.insta-grid a {
+  display: block;
+  line-height: 0;
+}
+
+.insta-grid img {
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+
+.insta-grid a:hover img {
+  border-color: var(--accent);
+}
+
+/* Footer */
+footer {
+  border-top: 1px solid var(--border);
+}
+
+.footer-inner {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
-  gap: 20px;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 20px;
-  justify-items: center; 
+  gap: 1.25rem;
+  padding-top: 1.1rem;
+  padding-bottom: 1.1rem;
 }
 
-.insta-grid blockquote.instagram-media {
-  max-width: 280px !important; /* smaller width */
-  width: 100%;
-  margin: 0 auto;
-  border: 0;
-  background-color: #3f3f3f !important;
-  border-radius: 10px; /* optional: smooth corners */
-  padding: 10px;       /* optional: spacing inside the embed */
+.footer-inner a {
+  color: var(--muted);
 }
- .insta-main {   
-    -ms-flex: 70%; /* IE10 */
-    flex: 70%;
-    background-color: #d2d2d2;
-    padding: 50px;
-    vertical-align:middle;
-    border: 3px solid #666;
-    
-    
-  }
+
+.footer-inner a:hover {
+  color: var(--accent);
+  text-decoration: none;
+}
