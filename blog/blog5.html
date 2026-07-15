@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="Expires" content="0" />
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="bash script wsl2 ubuntu dev setup docker kind elasticsearch java node">
+<meta name="keywords" content="bash script wsl2 ubuntu dev setup docker kind elasticsearch java node">
+<title>AashishVarierR : QuickLoad</title>
+
+<!-- Add Open Graph and Twitter Card meta tags for better social sharing -->
+<meta property="og:title" content="QuickLoad">
+<meta property="og:description" content="QuickLoad">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://aashishvarier.github.io/portfolio/blog/blog5.html">
+<meta property="og:image" content="https://aashishvarier.github.ioportfolio/blog/blog5.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="QuickLoad">
+<meta name="twitter:description" content="QuickLoad">
+<meta name="twitter:image" content="https://aashishvarier.github.io/portfolio/blog/blog5.html">
+
+<!-- Add canonical URL to prevent duplicate content issues -->
+<link rel="canonical" href="https://aashishvarier.github.io/portfolio/blog/blog5.html">
+
+<!-- Include a robots meta tag to allow indexing -->
+<meta name="robots" content="index, follow">
+</head>
+<body>
+
+
+<div class="navbar">
+  <a href="../index.html" ><b>Aashish Varier R</b></a>
+  <a href="../html/blog.html" class="right active">Blog</a>
+  <a href="../html/project.html" class="right">Project</a>
+</div>
+<div class ="center">
+  <h1>Blog #5: QuickLoad - One Script to Set Up a Fresh WSL2 Box</h1>
+  <h5>Date: Jul 15, 2026</h5>
+  <h6>Tag: Bash, WSL</h6>
+
+  <h2>Introduction</h2>
+    <p>Every time I reset a WSL distro (which happens more often than I would like to admit), I end up searching for the same install commands all over again. The Docker GPG key steps, the nvm curl command, the Elasticsearch apt repo and so on. After doing this hunt one too many times, I put all of it into a single interactive bash script and called it QuickLoad.</p>
+    <p>You run <code>./dev_setup.sh</code> on a fresh WSL2 Ubuntu box, pick what you want from a numbered menu, and it installs my usual stack for you.</p>
+
+    <p>The source code can be found <a href="https://github.com/AashishVarier/QuickLoad">here</a></p>
+
+    <p><i>NOTE:</i> The repo is archived. I am not actively maintaining it, but it is self-contained and might still save someone (mostly future me) an afternoon of setup. More on that at the end.</p>
+
+    <h2>What it installs</h2>
+    <ul>
+        <li>Git</li>
+        <li>Java 21 + Maven</li>
+        <li>Docker Engine</li>
+        <li>KinD (Kubernetes-in-Docker)</li>
+        <li>Elastic Stack OSS 7.10.2</li>
+        <li>VS Code + extensions</li>
+        <li>Node/React (via nvm, with a create-react-app scaffold)</li>
+        <li>PostgreSQL + SQLite</li>
+        <li>Godot Engine</li>
+        <li>Python 3 + venv</li>
+    </ul>
+
+    <h2>How it works</h2>
+    <p>The script shows a numbered menu of components. You can pick a single one, a comma separated list, or "Install All". Each installer is idempotent, so if a component fails you can just re-run the script and retry it without breaking whatever already got installed.</p>
+
+    <p>Before installing anything it runs a few pre-flight checks:</p>
+    <ul>
+        <li>Ubuntu version (meant for WSL2 Ubuntu 22.04+)</li>
+        <li>That you are actually on WSL</li>
+        <li>Internet connectivity</li>
+        <li>At least 20GB of free disk</li>
+    </ul>
+
+    <p>Everything gets logged to <code>~/dev-setup-install.log</code> and at the end you get a pass/skip/fail summary, so you know exactly which component to retry.</p>
+
+    <p><i>NOTE:</i> Run it as a normal user, not root. The script calls <code>sudo</code> by itself where needed, and some tools (Elasticsearch for one) refuse to run as root anyway.</p>
+
+    <h3>KinD extras</h3>
+    <p>There is also a small <code>KinD/</code> folder with cluster configs (like <code>kind-3nodes.yaml</code>) and some dashboard notes, for bringing up a local multi-node kubernetes cluster once Docker and KinD are in place.</p>
+
+    <h2>Rough edges worth knowing</h2>
+    <ul>
+        <li>Elastic is deliberately pinned to OSS 7.10.2. That is the last Apache-licensed release before Elastic changed their license, and I wanted to stay on the open source side of that line.</li>
+        <li>The React step uses create-react-app, which is deprecated now. Node and npm install fine either way, and the sample app scaffold failing is non-fatal. For anything real I would use Vite instead.</li>
+        <li>Godot's editor needs a display, so WSLg (Windows 11) is required to actually open it. The install itself works without one.</li>
+        <li>Docker and Postgres prefer systemd. The script falls back to the <code>service</code> shim if systemd is off, but if you want things to auto-start you need <code>[boot] systemd=true</code> in <code>/etc/wsl.conf</code> followed by a <code>wsl --shutdown</code>.</li>
+        <li>The last verification I did covered script syntax and menu logic, not a full end-to-end run on a fresh box. The "latest release" downloads (KinD, Godot, Node) are the most likely things to have silently broken via a 404 since then.</li>
+    </ul>
+
+    <h2>On archiving it</h2>
+    <p>I have marked the repo as archived because I know myself well enough to admit I will not be keeping the install steps current. Setup scripts like this rot quietly - the script does not change, the internet underneath it does. But since it is a single file with no dependencies on anything of mine, it felt more useful left up as-is than deleted. If a component fails, the log and the summary should point you to the exact step, and fixing one installer function is usually a small edit.</p>
+
+</div>
+
+<div class="footer">
+
+  <a href="https://github.com/AashishVarier" >
+    <i class="fa fa-github animate" style="font-size:36px" >&nbsp</i>
+    </a>
+  <a href="https://www.linkedin.com/in/aashish-varier-2b232489/" >
+    <i class="fa fa-linkedin-square animate" style="font-size:36px" >&nbsp</i>
+  </a>
+  <a href="https://twitter.com/arvariable" >
+    <i class="fa fa-twitter animate" style="font-size:36px" ></i>
+  </a>
+</div>
+<script type="text/javascript" src="../script/script.js"></script>
+</body>
+</html>
