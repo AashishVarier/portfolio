@@ -1,0 +1,30 @@
+# Aashish Varier R
+
+> Personal site of Aashish Varier R, a software engineer based in India who builds cloud-ready applications. The site contains personal projects, blog posts and film photography highlights.
+
+- Home: https://variableduck.com/
+- RSS feed: https://variableduck.com/feed.xml
+- GitHub: https://github.com/AashishVarier
+- LinkedIn: https://www.linkedin.com/in/aashish-varier-2b232489/
+- Twitter: https://twitter.com/arvariable
+- Instagram (film photography): https://www.instagram.com/aashish.varier/
+
+## Blog
+
+- [QuickLoad - One Script to Set Up a Fresh WSL2 Box](https://variableduck.com/blog/blog5.html): A single interactive bash script that sets up a dev stack (Git, Java, Docker, KinD, Elastic, Node, Postgres and more) on a fresh WSL2 Ubuntu box. Published Jul 15, 2026.
+- [Designing an Alerter](https://variableduck.com/blog/blog4.html): Designing a scalable alerter as an event-driven ETL pipeline with Kafka in KRaft mode, Elasticsearch, Logstash, Python microservices and Docker Compose. Published Jun 14, 2025.
+- [Docker Cheat Sheet](https://variableduck.com/blog/blog3.html): A cheat sheet of frequently used Docker commands. Published Jan 05, 2025.
+- [Finding and Using Pretrained Models from HuggingFace](https://variableduck.com/blog/blog2.html): Notes on finding and deploying a pre-trained model from HuggingFace, including translation with Helsinki-NLP/opus-mt-mul-en. Published Oct 19, 2024.
+- [Extension 101](https://variableduck.com/blog/blog1.html): A concise quick reference guide on Chrome extensions. Published Oct 29, 2023.
+- [How to use Github Pages?](https://variableduck.com/blog/blog0.html): A beginner's step-by-step guide to hosting a site with GitHub Pages. Published Sep 19, 2023.
+
+## Projects
+
+Full list: https://variableduck.com/html/project.html
+
+- [Help Me God](https://github.com/AashishVarier/help_me_chrome_extension): A minimalist Chrome extension (Manifest V3) that blocks a hardcoded list of sites after 30 minutes/day of use.
+- [QuickLoad](https://github.com/AashishVarier/QuickLoad): Interactive bash script to set up a dev stack on a fresh WSL2 Ubuntu box.
+- [Alerter 2.0](https://github.com/AashishVarier/alerter2.0): A scalable ETL pipeline using event-driven architecture for real-time data processing.
+- [Chrome Extension](https://github.com/AashishVarier/chrome_extension): Extension 101 samples, a YouTube channel blocker, and a YouTube page translator.
+- [Portfolio](https://github.com/AashishVarier/portfolio): This website, built with plain HTML, CSS and JavaScript.
+- [LeetCode](https://github.com/AashishVarier/leetCode-neetCode): 150 NeetCode problems and Blind 75.

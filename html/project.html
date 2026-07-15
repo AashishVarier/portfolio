@@ -1,106 +1,110 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title> Hi, I'm Aashish &#128075;</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AashishVarierR : Projects</title>
+<meta name="description" content="Personal projects by Aashish Varier R: Chrome extensions, an event-driven ETL pipeline, this portfolio website, a WSL2 setup script and LeetCode solutions.">
+<link rel="canonical" href="https://variableduck.com/html/project.html">
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
 <meta http-equiv="Pragma" content="no-cache" />
 <meta http-equiv="Expires" content="0" />
+<meta property="og:title" content="AashishVarierR : Projects">
+<meta property="og:description" content="Personal projects by Aashish Varier R: Chrome extensions, an event-driven ETL pipeline, this portfolio website, a WSL2 setup script and LeetCode solutions.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://variableduck.com/html/project.html">
+<meta property="og:image" content="https://variableduck.com/image/intro.jpg">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="AashishVarierR : Projects">
+<meta name="twitter:description" content="Personal projects by Aashish Varier R: Chrome extensions, an event-driven ETL pipeline, this portfolio website, a WSL2 setup script and LeetCode solutions.">
+<meta name="twitter:image" content="https://variableduck.com/image/intro.jpg">
+<link rel="icon" type="image/png" href="../image/icon-removebg-preview.png">
+<link rel="alternate" type="application/rss+xml" title="Aashish Varier R : Blog" href="https://variableduck.com/feed.xml">
 <link rel="stylesheet" href="../css/style.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
 
+<header>
+  <nav class="nav-inner">
+    <a href="../index.html" class="home">Aashish Varier R</a>
+    <a href="blog.html">Blog</a>
+    <a href="project.html" aria-current="page">Project</a>
+  </nav>
+</header>
 
-<div class="navbar">
-  <a href="../index.html" ><b>Aashish Varier R</b></a>
-  <a href="blog.html" class="right">Blog</a>
-  <a href="project.html" class="right active">Project</a>
-</div>
+<main>
+  <h1>Projects</h1>
 
-<div class="fliter" >
-  <a>Filter by topic:</a>
-  <div id="myBtnContainer">
-    <button class="btn active" onclick="filterSelection('all')" >Show all</button>
-    <button class="btn" onclick="filterSelection('java')" >Java</button>
-    <button class="btn" onclick="filterSelection('python')" >Python</button>
-    <button class="btn" onclick="filterSelection('sd')" >System Design</button>
-    <!--<button class="btn" onclick="filterSelection('springboot')" >SpringBoot</button>-->
-    <button class="btn" onclick="filterSelection('js')" >JavaScript</button>
-    <button class="btn" onclick="filterSelection('htmlcss')">HTML/CSS</button>
-    <button class="btn" onclick="filterSelection('bash')" >Bash</button>
-  </div>
-</div>
-<!--3 column per class ="row"-->
-<div class="row">
-  <div class="center htmlcss js" onclick="window.location.href = 'https://github.com/AashishVarier/help_me_chrome_extension';">
-    <h2>#5 Help Me God</h2>
-    <h5>Tag: html,css,javascript</h5>
-    <p>A minimalist Chrome extension (Manifest V3) that blocks a hardcoded list of sites once you've spent 30 minutes/day on them, tracked with chrome.alarms and chrome.storage. No settings screen, no accounts — just a popup with the site list and a countdown.</p>
-    <p>Time only counts while a blocked site is the active tab, usage resets nightly at midnight (no manual reset), and site matching uses simple wildcard-to-regex rules. Archived and no longer actively maintained.</p>
+  <div class="filter" role="group" aria-label="Filter by topic">
+    <span class="filter-label">Filter by topic:</span>
+    <button class="active" data-filter="all" aria-pressed="true">Show all</button>
+    <button data-filter="java" aria-pressed="false">Java</button>
+    <button data-filter="python" aria-pressed="false">Python</button>
+    <button data-filter="sd" aria-pressed="false">System Design</button>
+    <button data-filter="js" aria-pressed="false">JavaScript</button>
+    <button data-filter="htmlcss" aria-pressed="false">HTML/CSS</button>
+    <button data-filter="bash" aria-pressed="false">Bash</button>
   </div>
 
+  <ul class="post-list">
 
+    <li class="htmlcss js">
+      <h2><a href="https://github.com/AashishVarier/help_me_chrome_extension">#5 Help Me God</a></h2>
+      <p class="meta">Tag: html,css,javascript</p>
+      <p>A minimalist Chrome extension (Manifest V3) that blocks a hardcoded list of sites once you've spent 30 minutes/day on them, tracked with chrome.alarms and chrome.storage. No settings screen, no accounts — just a popup with the site list and a countdown.</p>
+      <p>Time only counts while a blocked site is the active tab, usage resets nightly at midnight (no manual reset), and site matching uses simple wildcard-to-regex rules. Archived and no longer actively maintained.</p>
+    </li>
 
-  <div class="center bash" onclick="window.location.href = 'https://github.com/AashishVarier/QuickLoad';">
-    <h2>#4 QuickLoad</h2>
-    <h5>Tag: Bash, WSL</h5>
-    <p>A single interactive bash script that sets up my usual dev stack (Git, Java, Docker, KinD, Elastic, Node, Postgres and more) on a fresh WSL2 Ubuntu box, picked from a numbered menu instead of hunting down install commands every time.</p>
-    <p>Archived and no longer actively maintained, but self-contained enough to still be useful. Write-up <a href="../blog/blog5.html">here</a>.</p>
+    <li class="bash">
+      <h2><a href="https://github.com/AashishVarier/QuickLoad">#4 QuickLoad</a></h2>
+      <p class="meta">Tag: Bash, WSL</p>
+      <p>A single interactive bash script that sets up my usual dev stack (Git, Java, Docker, KinD, Elastic, Node, Postgres and more) on a fresh WSL2 Ubuntu box, picked from a numbered menu instead of hunting down install commands every time.</p>
+      <p>Archived and no longer actively maintained, but self-contained enough to still be useful. Write-up <a href="../blog/blog5.html">here</a>.</p>
+    </li>
+
+    <li class="python sd">
+      <h2><a href="https://github.com/AashishVarier/alerter2.0">#3 Alerter 2.0</a></h2>
+      <p class="meta">Tag: python, System Design</p>
+      <p>Alerter 2.0</p>
+      <p> A scalable ETL pipeline using event-driven architecture for real-time data processing, which have components for synthetic data generation, pub-sub, anomaly detection (pending), alerting and front-end (pending).</p>
+    </li>
+
+    <li class="htmlcss js">
+      <h2><a href="https://github.com/AashishVarier/chrome_extension">#2 Chrome Extension</a></h2>
+      <p class="meta">Tag: html,css,javascript</p>
+      <ul>
+        <li>extention 101 - to understand basic how to's mentioned in the <a href="../blog/blog1.html">quick reference guide</a> </li>
+        <li>Youtube Channel blocker</li>
+        <li>Youtube page translator with option for locally hosted LLMs or Google's translation API</li>
+      </ul>
+    </li>
+
+    <li class="htmlcss js">
+      <h2><a href="https://github.com/AashishVarier/portfolio">#1 Portfolio</a></h2>
+      <p class="meta">Tag: html,css,javascript</p>
+      <p>portfolio website using HTML, CSS, JavaScript which contains personal projects and blogs</p>
+      <p>
+        Site is live at <a href="https://variableduck.com/"> here</a>
+      </p>
+    </li>
+
+    <li class="python java">
+      <h2><a href="https://github.com/AashishVarier/leetCode-neetCode">#0 LeetCode</a></h2>
+      <p class="meta">Tag: python, java</p>
+      <p>leetCode-neetCode</p>
+      <p>150 NeetCode problems and Blind 75 from <a href="https://neetcode.io/"> NeetCode</a></p>
+    </li>
+
+  </ul>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <a href="https://github.com/AashishVarier">GitHub</a>
+    <a href="https://www.linkedin.com/in/aashish-varier-2b232489/">LinkedIn</a>
+    <a href="https://twitter.com/arvariable">Twitter</a>
   </div>
-
-    <div class="center python sd" onclick="window.location.href = 'https://github.com/AashishVarier/alerter2.0';">
-    <h2>#3 Alerter 2.0</h2>
-    <h5>Tag: python, System Design</h5> 
-    <p>Alerter 2.0</p>
-    <p> A scalable ETL pipeline using event-driven architecture for real-time data processing, which have components for synthetic data generation, pub-sub, anomaly detection (pending), alerting and front-end (pending).</p>
-  </div>
-</div>
-
-<div class="row">
-
-  <div class="center htmlcss js "  onclick="window.location.href = 'https://github.com/AashishVarier/chrome_extension';">
-    <h2>#2 Chrome Extension</h2>
-    <h5>Tag: html,css,javascript</h5> 
-    <!--<div class="fakeimg" style="height:200px;">Image</div>-->
-    <ul>
-      <li>extention 101 - to understand basic how to's mentioned in the <a href="../blog/blog1.html">quick reference guide</a> </li>
-      <li>Youtube Channel blocker</li>
-      <li>Youtube page translator with option for locally hosted LLMs or Google's translation API</li>
-    </ul>
-    <br>
-  </div>
-  <div class="center htmlcss js"  onclick="window.location.href = 'https://github.com/AashishVarier/portfolio';">
-    <h2>#1 Portfolio</h2>
-    <h5>Tag: html,css,javascript </h5> 
-    <!--<div class="fakeimg" style="height:200px;">Image</div>-->
-    <p>portfolio website using HTML, CSS, JavaScript which contains personal projects and blogs</p>
-    <p>
-      Site is live at <a href="https://variableduck.com/"> here</a> 
-    </p>
-    <br>
-  </div>
-  <div class="center python java" onclick="window.location.href = 'https://github.com/AashishVarier/leetCode-neetCode';">
-    <h2>#0 LeetCode</h2>
-    <h5>Tag: python, java </h5> 
-    <p>leetCode-neetCode</p>
-    <p>150 NeetCode problems and Blind 75 from <a href="https://neetcode.io/"> NeetCode</a></p>
-  </div>
-</div>
-
-<div class="footer">
-   
-  <a href="https://github.com/AashishVarier" >
-    <i class="fa fa-github animate" style="font-size:36px" >&nbsp</i>
-    </a>
-  <a href="https://www.linkedin.com/in/aashish-varier-2b232489/" >
-    <i class="fa fa-linkedin-square animate" style="font-size:36px" >&nbsp</i>
-  </a>
-  <a href="https://twitter.com/arvariable" >
-    <i class="fa fa-twitter animate" style="font-size:36px" ></i>
-  </a>
-</div>
-  <script type="text/javascript" src="../script/script.js"></script>
+</footer>
+<script src="../script/script.js"></script>
 </body>
 </html>

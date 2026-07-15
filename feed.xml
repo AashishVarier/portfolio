@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+  <title>Aashish Varier R : Blog</title>
+  <link>https://variableduck.com/html/blog.html</link>
+  <description>Blog posts by Aashish Varier R on GitHub Pages, Chrome extensions, HuggingFace pretrained models, Docker, designing an alerter, and WSL2 dev setup.</description>
+  <language>en</language>
+  <atom:link href="https://variableduck.com/feed.xml" rel="self" type="application/rss+xml"/>
+
+  <item>
+    <title>#5 QuickLoad - One Script to Set Up a Fresh WSL2 Box</title>
+    <link>https://variableduck.com/blog/blog5.html</link>
+    <guid>https://variableduck.com/blog/blog5.html</guid>
+    <pubDate>Wed, 15 Jul 2026 00:00:00 GMT</pubDate>
+    <description>A single interactive bash script that sets up my usual dev stack (Git, Java, Docker, KinD, Elastic, Node, Postgres and more) on a fresh WSL2 Ubuntu box. The repo is archived, but it is self-contained and might still save you an afternoon of setup.</description>
+  </item>
+
+  <item>
+    <title>#4 Designing an Alerter</title>
+    <link>https://variableduck.com/blog/blog4.html</link>
+    <guid>https://variableduck.com/blog/blog4.html</guid>
+    <pubDate>Sat, 14 Jun 2025 00:00:00 GMT</pubDate>
+    <description>A scalable ETL pipeline using event-driven architecture for real-time data processing, which have components for synthetic data generation, pub-sub, and alerting.</description>
+  </item>
+
+  <item>
+    <title>#3 Docker Cheat Sheet</title>
+    <link>https://variableduck.com/blog/blog3.html</link>
+    <guid>https://variableduck.com/blog/blog3.html</guid>
+    <pubDate>Sun, 05 Jan 2025 00:00:00 GMT</pubDate>
+    <description>Docker cheat sheet of commands that I frequent</description>
+  </item>
+
+  <item>
+    <title>#2 Finding and Using Pretrained Models from HuggingFace</title>
+    <link>https://variableduck.com/blog/blog2.html</link>
+    <guid>https://variableduck.com/blog/blog2.html</guid>
+    <pubDate>Sat, 19 Oct 2024 00:00:00 GMT</pubDate>
+    <description>Usefull notes to find and deploy a pre-trained machine learning model from HuggingFace, including translation tasks using Helsinki-NLP/opus-mt-mul-en. Also contains usefully tips on Python venv and TensorFlow setup to use HuggingFace.</description>
+  </item>
+
+  <item>
+    <title>#1 Extension 101</title>
+    <link>https://variableduck.com/blog/blog1.html</link>
+    <guid>https://variableduck.com/blog/blog1.html</guid>
+    <pubDate>Sun, 29 Oct 2023 00:00:00 GMT</pubDate>
+    <description>A concise quick reference guide on Chrome Extention.</description>
+  </item>
+
+  <item>
+    <title>#0 How to use Github Pages?</title>
+    <link>https://variableduck.com/blog/blog0.html</link>
+    <guid>https://variableduck.com/blog/blog0.html</guid>
+    <pubDate>Tue, 19 Sep 2023 00:00:00 GMT</pubDate>
+    <description>GitHub Pages is a free hosting service provided by GitHub that allows you to showcase your web development projects, personal blogs, or documentation directly from your GitHub repository</description>
+  </item>
+
+</channel>
+</rss>
