@@ -11,6 +11,7 @@
 
 ## Blog
 
+- [Vibe Coding Outside Your Stack](https://variableduck.com/blog/blog6.html): What transferred from 7 years of engineering when vibe coding an offline Android dictation app in an unfamiliar stack: requirements, testing as a user, and an AI security audit. Published Nov 15, 2026.
 - [QuickLoad - One Script to Set Up a Fresh WSL2 Box](https://variableduck.com/blog/blog5.html): A single interactive bash script that sets up a dev stack (Git, Java, Docker, KinD, Elastic, Node, Postgres and more) on a fresh WSL2 Ubuntu box. Published Jul 15, 2026.
 - [Designing an Alerter](https://variableduck.com/blog/blog4.html): Designing a scalable alerter as an event-driven ETL pipeline with Kafka in KRaft mode, Elasticsearch, Logstash, Python microservices and Docker Compose. Published Jun 14, 2025.
 - [Docker Cheat Sheet](https://variableduck.com/blog/blog3.html): A cheat sheet of frequently used Docker commands. Published Jan 05, 2025.
