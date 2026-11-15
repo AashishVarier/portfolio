@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AashishVarierR : Vibe Coding Outside Your Stack</title>
+<meta name="description" content="What transferred from 7 years of engineering when I vibe coded an Android app in a stack I did not know: requirements, testing as a user, and an AI security audit.">
+<meta name="keywords" content="vibe coding ai android kotlin jetpack compose whisper offline dictation security audit">
+<link rel="canonical" href="https://variableduck.com/blog/blog6.html">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="Expires" content="0" />
+<meta property="og:title" content="Vibe Coding Outside Your Stack">
+<meta property="og:description" content="What transferred from 7 years of engineering when I vibe coded an Android app in a stack I did not know: requirements, testing as a user, and an AI security audit.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://variableduck.com/blog/blog6.html">
+<meta property="og:image" content="https://variableduck.com/image/intro.jpg">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Vibe Coding Outside Your Stack">
+<meta name="twitter:description" content="What transferred from 7 years of engineering when I vibe coded an Android app in a stack I did not know: requirements, testing as a user, and an AI security audit.">
+<meta name="twitter:image" content="https://variableduck.com/image/intro.jpg">
+<meta name="robots" content="index, follow">
+<link rel="icon" type="image/png" href="../image/icon-removebg-preview.png">
+<link rel="alternate" type="application/rss+xml" title="Aashish Varier R : Blog" href="https://variableduck.com/feed.xml">
+<link rel="stylesheet" href="../css/style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Blog #6: Vibe Coding Outside Your Stack",
+  "datePublished": "2026-11-15",
+  "author": {
+    "@type": "Person",
+    "name": "Aashish Varier R",
+    "url": "https://variableduck.com/"
+  },
+  "url": "https://variableduck.com/blog/blog6.html",
+  "mainEntityOfPage": "https://variableduck.com/blog/blog6.html"
+}
+</script>
+</head>
+<body>
+
+<header>
+  <nav class="nav-inner">
+    <a href="../index.html" class="home">Aashish Varier R</a>
+    <a href="../html/blog.html" aria-current="page">Blog</a>
+    <a href="../html/project.html">Project</a>
+  </nav>
+</header>
+
+<main>
+<article>
+  <h1>Blog #6: Vibe Coding Outside Your Stack</h1>
+  <p class="meta"><time datetime="2026-11-15">Date: Nov 15, 2026</time></p>
+  <p class="meta">Tag: AI, Android, Vibe Coding</p>
+
+  <h2>Introduction</h2>
+    <p>I wanted a dictation app for personal notes that never sends my voice anywhere. The options were either cloud-based or subscription-based. So I built my own one last weekend.</p>
+    <p>The thing is, my last Android app came from following a tutorial years ago. At this point I have seven years as a developer and tech lead, but none of them in Kotlin, Jetpack Compose, or native C++ through the NDK. This is not intended as a tutorial but a brief on what I belive carried over and what did not based on my experince.</p>
+
+    <h2>Requirements are still the job</h2>
+    <p>The most useful hour went into the spec, not the code. Before the AI wrote a line, I had a short list: an on-device Whisper model, fully offline, download a model or import my own, no recording time limit, and a way to get the text to my PC. I also wrote down what I did not want: no analytics, no accounts, nothing extra.</p>
+    <p>That is a refinement session, not prompting. Define done, name the constraints, write down the non-goals. An AI is a very fast engineer who will build anything ambiguous in the most elaborate way possible.</p>
+    <p>I also gave it a build order: native layer first, then models, recording, transcription, UI, and CI last. This is the same way I would sequence a team, with the riskiest integration first.</p>
+
+    <h2>What transferred, and what did not</h2>
+    <p>What transferred:</p>
+    <ul>
+        <li><b>Knowing which questions to ask.</b> I did not know Android's foreground service types. I did know that a two-hour recording can't live in memory and that a long job has to survive the screen turning off. Asking the right question got me the right API.</li>
+        <li><b>Reading code I did not write.</b> Years of PR review turned out to be the core skill.</li>
+        <li><b>Smelling scope creep</b>, mine included.</li>
+    </ul>
+    <p>What did not:</p>
+    <ul>
+        <li><b>Platform gotchas.</b> Permissions, battery optimisers, and file names with colons that Windows refuses to accept. I only knew about these because I asked.</li>
+        <li><b>Judging what's idiomatic.</b> I can tell when code is clear. I can't tell whether a Kotlin developer would write it that way. For software with one user, I have decided this is fine.</li>
+    </ul>
+
+    <h2>Testing it like a user</h2>
+    <p>Meeting the requirements and compiling cleanly was the easy half. A week of actually using it found:</p>
+    <ul>
+        <li><b>A silent failure.</b> Speaking more than one language into the English-only model produced no error, only bad or empty output.</li>
+        <li><b>A stuck progress bar.</b> The progress bar sat still while transcription was still running in the background, so I force-closed the app and killed the job. The model only reports success or failure at the end, so I replaced the bar with a rough estimate based on timings from test runs. It isn't precise, but it tells you the app is still working.</li>
+        <li><b>A missing feature.</b> Once I used it for a while, I wanted playback, so I could listen when a transcript looked wrong.</li>
+    </ul>
+    <p>No unit test would have caught any of these. The progress bar addition is my favourite: the code was correct, and the user (me) did the wrong thing because the screen told him to.</p>
+
+    <h2>Then I had an agent audit it</h2>
+    <p>I started a fresh agent session with no context from the build and asked for a bug and security audit. Each finding needed a severity, a confidence level, and the code it pointed to. Some highlights:</p>
+    <div class="table-wrap">
+    <table>
+        <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Severity</th>
+                <th scope="col">Confidence</th>
+                <th scope="col">Finding</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>BUG-001</td>
+                <td>High</td>
+                <td>Medium</td>
+                <td>Unsaved edits can overwrite a freshly finished transcript</td>
+            </tr>
+            <tr>
+                <td>BUG-002</td>
+                <td>Medium</td>
+                <td>High</td>
+                <td>A full disk while recording crashes the app, then crashes it on every launch</td>
+            </tr>
+            <tr>
+                <td>BUG-003</td>
+                <td>Medium</td>
+                <td>High</td>
+                <td>A full disk during transcription makes the service retry forever; Cancel doesn't stop it</td>
+            </tr>
+            <tr>
+                <td>SEC-001</td>
+                <td>Low</td>
+                <td>High</td>
+                <td>A crafted model file kills the app during import (native abort)</td>
+            </tr>
+            <tr>
+                <td>SEC-002</td>
+                <td>Low</td>
+                <td>Medium</td>
+                <td>Default task affinity allows task hijacking on Android 8–10</td>
+            </tr>
+            <tr>
+                <td>SEC-003</td>
+                <td>Low</td>
+                <td>High</td>
+                <td>A deleted transcript lingers in the share cache</td>
+            </tr>
+            <tr>
+                <td>BUG-008</td>
+                <td>Low</td>
+                <td>Medium</td>
+                <td>The wake lock expires after 4 h on a single note</td>
+            </tr>
+        </tbody>
+    </table>
+    </div>
+    <p>In total there were 8 bugs, 5 security notes, and a handful of lint and accessibility items. I did not know task hijacking was a thing until this report.</p>
+
+    <h2>But.. but asking AI to review AI code a bad idea right?</h2>
+    <p>I asked myself the same thing. It's the same kind of model, so it has the same kind of blind spots. Partly true. What I think made this useful:</p>
+    <ul>
+        <li><b>A separate session.</b> The reviewer did not know what the builder intended, so it judged the code, not the intentions.</li>
+        <li><b>Confidence levels and code references, not vibes.</b> A low-confidence finding is a lead, not a fact.</li>
+        <li><b>I checked findings against the code before accepting a fix.</b></li>
+    </ul>
+    <p>Then compare the two lists. There's no overlap. The agent found edge cases: full disks, malformed input, OS quirks. I found experience problems. Neither replaces the other. I treated the audit like a second reviewer, not a sign-off, the same way nobody treats an approved PR as proof there are no bugs.</p>
+
+    <h2>Throwaway personal software</h2>
+    <p>Building a tool for one user used to take multiple weekends (that too only if you really really wanted it!). Now it takes evenings. That changes the math. My app doesn't need to be general, maintainable for years, or published. It needs to do my five things and not lose my notes. If it rots in two years, I will rebuild it, probably faster.</p>
+    <p>What is not throwaway is the habits: spec it, sequence it, use it like a user, and get a second pair of eyes. Seven years bought me those, not the stack.</p>
+
+</article>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <a href="https://github.com/AashishVarier">GitHub</a>
+    <a href="https://www.linkedin.com/in/aashish-varier-2b232489/">LinkedIn</a>
+    <a href="https://twitter.com/arvariable">Twitter</a>
+  </div>
+</footer>
+</body>
+</html>

@@ -208,6 +208,36 @@ pre code {
   padding: 0;
 }
 
+/* Tables in posts; the wrapper scrolls sideways on narrow screens */
+.table-wrap {
+  overflow-x: auto;
+  margin: 0 0 1rem;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+th, td {
+  text-align: left;
+  vertical-align: top;
+  padding: 0.5rem 0.75rem;
+  border-bottom: 1px solid var(--border);
+}
+
+th {
+  color: var(--muted);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+td:first-child {
+  white-space: nowrap;
+}
+
 /* Film photo grid on the home page; each photo links to its Instagram post */
 .insta-grid {
   display: grid;
